@@ -1,32 +1,12 @@
 ---
 import ArticleCard from './ArticleCard.astro';
+import type { NewsletterPost } from '../../data/newsletter';
 
-const articles = [
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuBi64EOzpH1iKXNmYNuAZJe9ukijR9HuNw5Qd31bYwdDOeIgI-m4AUgeHpgUAz3WCXNdrVD6olFWFe1cTLQJQsUynMbuKidjMU0rGo9LfeX4lJLbTPvNZSEnQZloZKG8YK74Xtlx9lTCRwpVUD-bxKtIZzaiuK7g0Dwm4WVKngI-mZ65xTROCSH81NM9fLeDN-7ge_TGkJz_VgJL0PUBLLsOr_YX8Fj-dnsnrtjzaiaIHCZg8b8K8PdI4a_KJoUnDU6-H0-JfFSz',
-    imageAlt: 'Wartime archives and documents',
-    category: 'Research Notes',
-    date: 'SEP 2024',
-    title: 'The OSS in Occupied France',
-    excerpt: 'A deep dive into the declassified OSS files that inspired Trust No One—the real networks, agents, and operations that shaped Conor Thorn\'s world.',
-  },
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDCWuwAEyJl6qCYC9-gRr1wyygHXFCKXjnxjuYdtidP_UTnJK1HBT3D9-KmNSBnd0UZSTCfqpglCfB4JI9iWqOcl1WvhWxb6rPMcTE9zcoQZcmesnZOnKyavIXjmp9BYpUt-l1BkXqyBzPjxa9uPSC1VCjS2MDSQl1EEASkOnpwFDiuvL-5gb5pq6us-Bo9tObI3QWrcTWf0-ZpdHDyVYUiCCJB-4BAmqe',
-    imageAlt: 'Historical wartime map of Europe',
-    category: 'Series News',
-    date: 'AUG 2024',
-    title: "Nobody's Fool: What to Expect from Book Five",
-    excerpt: 'Glenn Dyer shares what readers can expect from the fifth Conor Thorn novel—new settings, returning characters, and the most personal mission yet.',
-  },
-  {
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCQy0K_b44XapnubQFr87JE2T2NtVaCIa88mSg0TT4cot5dLPUOvRdTbtwUyiogwtanJvxh4l0SstQHqkANu-G4iZ0wO6KvsxS_AydvJYaGIQklEj4o0KV4GmRmxWtu1wAqmBeCGy1eVN7w5SvyxTL5tXcPqFqUIg_CUCrAfH59iThRWaMpTD3ElyShF8MZlEUe2GWzb8nzvrEZZ4oGFwa6eDxfMRd3nbvv1Zz_LRWe8i_rLGw_nVNI5K7_3zG9A5P5ziplFSXyCExM',
-    imageAlt: 'Vintage typewriter and wartime notebook',
-    category: 'Behind the Books',
-    date: 'JUL 2024',
-    title: 'Why I Write WWII Spy Fiction',
-    excerpt: 'On the thrill of uncovering forgotten history, the responsibility of writing about real events, and why the shadow wars of 1939–1945 are more relevant than ever.',
-  },
-];
+interface Props {
+  posts: NewsletterPost[];
+}
+
+const { posts } = Astro.props;
 ---
 
 <section class="mb-[120px]">
@@ -39,9 +19,21 @@ const articles = [
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8">
-    {articles.map((article) => (
-      <ArticleCard {...article} />
-    ))}
-  </div>
+  {posts.length === 0 ? (
+    <p class="font-body-lg text-body-lg text-on-surface-variant">No posts yet. Check back soon.</p>
+  ) : (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8">
+      {posts.map((post) => (
+        <ArticleCard
+          image={post.image}
+          imageAlt={post.imageAlt}
+          category={post.category}
+          date={post.displayDate}
+          title={post.title}
+          excerpt={post.excerpt}
+          href={`/newsletter/${post.slug}`}
+        />
+      ))}
+    </div>
+  )}
 </section>

@@ -2,13 +2,14 @@
 ---
 
 <section class="col-span-12 lg:col-span-7 bg-surface-container p-12 border border-outline-variant">
-  <form class="space-y-10" method="POST">
+  <form id="contact-form" class="space-y-10" novalidate>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="flex flex-col gap-3">
         <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">YOUR NAME</label>
         <input
           type="text"
           name="name"
+          required
           placeholder="Full Name"
           class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant transition-colors"
         />
@@ -18,6 +19,7 @@
         <input
           type="email"
           name="email"
+          required
           placeholder="your@email.com"
           class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant transition-colors"
         />
@@ -41,17 +43,56 @@
       <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">YOUR MESSAGE</label>
       <textarea
         name="message"
+        required
         rows="6"
         placeholder="Write your message here..."
         class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant resize-none transition-colors"
       ></textarea>
     </div>
 
+    <div id="form-feedback" class="hidden font-body-md text-body-md py-4 px-5"></div>
+
     <button
       type="submit"
-      class="w-full bg-secondary text-white py-5 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
+      id="submit-btn"
+      class="w-full bg-secondary text-white py-5 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
     >
       SEND MESSAGE
     </button>
   </form>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const feedback = document.getElementById('form-feedback') as HTMLDivElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'SENDING...';
+    feedback.className = 'hidden';
+
+    const body = new FormData(form);
+
+    try {
+      const res = await fetch('/api/contact', { method: 'POST', body });
+      const json = await res.json();
+
+      if (res.ok) {
+        feedback.textContent = 'Message sent. Thank you — Glenn will be in touch.';
+        feedback.className = 'font-body-md text-body-md py-4 px-5 bg-surface-container-high text-secondary border-l-2 border-secondary';
+        form.reset();
+        btn.textContent = 'SEND MESSAGE';
+        btn.disabled = false;
+      } else {
+        throw new Error(json.error ?? 'Unknown error');
+      }
+    } catch (err: any) {
+      feedback.textContent = err.message ?? 'Something went wrong. Please try again.';
+      feedback.className = 'font-body-md text-body-md py-4 px-5 bg-surface-container-high text-on-surface-variant border-l-2 border-secondary';
+      btn.textContent = 'SEND MESSAGE';
+      btn.disabled = false;
+    }
+  });
+</script>

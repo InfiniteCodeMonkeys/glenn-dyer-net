@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/admin",
+      "destination": "/keystatic",
+      "permanent": false
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/keystatic/:path*",
+      "permanent": false
+    }
+  ]
+}

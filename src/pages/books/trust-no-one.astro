@@ -9,12 +9,13 @@ import BookInterstitial from '../../components/books/BookInterstitial.astro';
 import BookRequisition from '../../components/books/BookRequisition.astro';
 import { getBook } from '../../data/books';
 
-const book = getBook('trust-no-one')!;
+const book = await getBook('trust-no-one');
+if (!book) return Astro.redirect('/books');
 ---
 
 <Layout
   title="Trust No One | Glenn Dyer"
-  description="Trust No One—Book Four in Glenn Dyer's Conor Thorn WWII espionage series. A gripping thriller rich in history and suspense."
+  description="Trust No One—Book Four in Glenn Dyer's Conor Thorn WWII espionage series."
 >
   <NavBar activePage="books" />
 

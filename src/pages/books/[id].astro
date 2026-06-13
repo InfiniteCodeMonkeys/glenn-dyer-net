@@ -7,9 +7,10 @@ import TechSpecs from '../../components/books/TechSpecs.astro';
 import BookTestimonials from '../../components/books/BookTestimonials.astro';
 import BookInterstitial from '../../components/books/BookInterstitial.astro';
 import BookRequisition from '../../components/books/BookRequisition.astro';
-import { books } from '../../data/books';
+import { getBooks } from '../../data/books';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const books = await getBooks();
   return books.map((book) => ({
     params: { id: book.id },
     props: { book },
