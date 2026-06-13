@@ -113,6 +113,22 @@
   --spacing-container-max: 1296px;
 }
 
+/* Responsive font sizes for mobile */
+@media (max-width: 767px) {
+  :root {
+    --text-headline-xl: 2.25rem;
+    --text-headline-xl--line-height: 1.1;
+    --text-headline-xl--letter-spacing: -0.01em;
+    --text-headline-lg: 1.875rem;
+    --text-headline-lg--line-height: 1.15;
+    --text-headline-lg--letter-spacing: 0;
+    --text-headline-md: 1.5rem;
+    --text-headline-md--line-height: 1.25;
+    --text-body-lg: 1.0625rem;
+    --text-body-lg--line-height: 1.6;
+  }
+}
+
 /* Material Symbols */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
