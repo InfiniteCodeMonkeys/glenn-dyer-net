@@ -1,0 +1,58 @@
+---
+const contacts = [
+  {
+    label: 'LITERARY AGENCY',
+    name: 'Rights & Representation',
+    detail: 'Use the contact form to reach Glenn\'s team.',
+  },
+  {
+    label: 'MEDIA & SPEAKING',
+    name: 'Interviews, Appearances & Events',
+    detail: 'Select the relevant subject in the contact form.',
+  },
+  {
+    label: 'READER MAIL',
+    name: 'General Correspondence Welcome',
+    detail: 'Glenn reads all reader mail and responds when possible.',
+  },
+];
+
+const socialLinks = [
+  { href: 'https://www.facebook.com/GlennDyerAuthor', label: 'Facebook' },
+  { href: 'https://twitter.com/GlennDyerAuthor', label: 'Twitter / X' },
+  { href: 'https://www.instagram.com/glennduffydyer', label: 'Instagram — @glennduffydyer' },
+  { href: 'https://www.linkedin.com/in/glenndyer', label: 'LinkedIn' },
+];
+---
+
+<aside class="col-span-12 lg:col-span-5 space-y-10">
+  <div>
+    <div class="flex items-center gap-4 mb-8">
+      <div class="w-10 h-0.5 bg-secondary"></div>
+      <h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">Contact Information</h2>
+    </div>
+
+    <div class="space-y-8">
+      {contacts.map(({ label, name, detail }) => (
+        <div class="border-b border-outline-variant pb-8">
+          <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-2">{label}</p>
+          <p class="font-body-md text-body-md text-primary font-medium mb-1">{name}</p>
+          <p class="font-body-md text-body-md text-on-surface-variant">{detail}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="bg-surface-container p-8 border border-outline-variant">
+    <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-6">FOLLOW GLENN DYER</p>
+    <ul class="space-y-3">
+      {socialLinks.map(({ href, label }) => (
+        <li>
+          <a href={href} target="_blank" rel="noopener noreferrer" class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors">
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</aside>

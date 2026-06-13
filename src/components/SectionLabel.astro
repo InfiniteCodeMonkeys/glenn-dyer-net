@@ -1,0 +1,19 @@
+---
+interface Props {
+  label: string;
+  bordered?: boolean;
+  class?: string;
+}
+
+const { label, bordered = false, class: className = '' } = Astro.props;
+---
+
+<span
+  class={[
+    'font-label-caps text-label-caps text-secondary',
+    bordered ? 'border-b border-secondary pb-2' : '',
+    className,
+  ].join(' ')}
+>
+  {label}
+</span>

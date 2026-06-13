@@ -1,0 +1,64 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+}
+
+const { variant = 'light' } = Astro.props;
+---
+
+{variant === 'dark' ? (
+  <section class="py-[120px]">
+    <div class="max-w-[1296px] mx-auto px-16">
+      <div class="bg-surface-container-high p-16 md:p-20 grid grid-cols-12 gap-8 items-center border-l-4 border-secondary">
+        <div class="col-span-12 md:col-span-7">
+          <p class="font-label-caps text-label-caps text-secondary mb-4 tracking-widest">NEWSLETTER</p>
+          <h2 class="font-headline-lg text-headline-lg text-primary font-bold mb-4 tracking-tight">Join the Newsletter</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+            Exclusive content, behind-the-scenes research notes, book news, and early access to new releases—delivered to your inbox.
+          </p>
+        </div>
+        <div class="col-span-12 md:col-span-5">
+          <form class="flex flex-col gap-4">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="w-full bg-surface-container border border-outline-variant text-primary placeholder:text-on-surface-variant font-body-md text-body-md py-4 px-5 focus:outline-none focus:border-secondary transition-colors"
+            />
+            <button
+              type="submit"
+              class="bg-secondary text-white py-4 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
+            >
+              SUBSCRIBE
+            </button>
+          </form>
+          <p class="mt-4 font-data-mono text-[11px] text-on-surface-variant uppercase tracking-widest">
+            No spam. Unsubscribe at any time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+) : (
+  <section class="py-[120px]">
+    <div class="max-w-xl mx-auto text-center px-8">
+      <div class="w-10 h-0.5 bg-secondary mx-auto mb-8"></div>
+      <h2 class="font-headline-lg text-headline-lg text-primary font-bold mb-6 tracking-tight">Stay in the Know</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
+        Sign up for Glenn Dyer's newsletter—book news, research notes, and exclusive content.
+      </p>
+      <div class="flex flex-col md:flex-row gap-3">
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="flex-grow bg-surface-container border border-outline-variant text-primary placeholder:text-on-surface-variant font-body-md text-body-md py-4 px-5 focus:outline-none focus:border-secondary transition-colors"
+        />
+        <button
+          type="submit"
+          class="bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors whitespace-nowrap"
+        >
+          SUBSCRIBE
+        </button>
+      </div>
+    </div>
+  </section>
+)}

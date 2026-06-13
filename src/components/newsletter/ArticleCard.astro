@@ -1,0 +1,44 @@
+---
+interface Props {
+  image: string;
+  imageAlt: string;
+  category: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  href?: string;
+}
+
+const { image, imageAlt, category, date, title, excerpt, href = '#' } = Astro.props;
+---
+
+<article class="flex flex-col group">
+  <div class="aspect-[3/4] mb-8 overflow-hidden hard-shadow-sm">
+    <img
+      src={image}
+      alt={imageAlt}
+      class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <div class="flex items-center gap-3 mb-4">
+    <span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+    <p class="font-label-caps text-label-caps text-secondary tracking-widest">{category}</p>
+    <p class="ml-auto font-data-mono text-data-mono text-on-surface-variant">{date}</p>
+  </div>
+
+  <h4 class="font-headline-md text-headline-md text-primary font-bold tracking-tight leading-tight mb-4 group-hover:text-secondary transition-colors">
+    {title}
+  </h4>
+
+  <p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 leading-relaxed">
+    {excerpt}
+  </p>
+
+  <a
+    href={href}
+    class="mt-6 font-label-caps text-label-caps text-secondary tracking-widest hover:text-white transition-colors uppercase"
+  >
+    Read More →
+  </a>
+</article>

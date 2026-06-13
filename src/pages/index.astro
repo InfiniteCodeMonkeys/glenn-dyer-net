@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import HeroCinematic from '../components/home/HeroCinematic.astro';
+import FeaturedBook from '../components/home/FeaturedBook.astro';
+import CriticalAcclaim from '../components/home/CriticalAcclaim.astro';
+import AboutTeaser from '../components/home/AboutTeaser.astro';
+import LatestDispatches from '../components/home/LatestDispatches.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+---
+
+<Layout title="Glenn Dyer | Author of the Conor Thorn WWII Espionage Series">
+  <NavBar activePage="home" />
+  <HeroCinematic />
+  <FeaturedBook />
+  <CriticalAcclaim />
+  <AboutTeaser />
+  <LatestDispatches />
+
+  <div class="bg-white">
+    <div class="max-w-[1280px] mx-auto px-16">
+      <NewsletterCTA variant="dark" />
+    </div>
+  </div>
+
+  <Footer />
+</Layout>

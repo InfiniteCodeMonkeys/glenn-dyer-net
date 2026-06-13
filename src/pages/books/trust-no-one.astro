@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/NavBar.astro';
+import Footer from '../../components/Footer.astro';
+import BookHero from '../../components/books/BookHero.astro';
+import TechSpecs from '../../components/books/TechSpecs.astro';
+import BookTestimonials from '../../components/books/BookTestimonials.astro';
+import BookInterstitial from '../../components/books/BookInterstitial.astro';
+import BookRequisition from '../../components/books/BookRequisition.astro';
+---
+
+<Layout title="Trust No One | Glenn Dyer" description="Trust No One—Book Four in Glenn Dyer's acclaimed Conor Thorn WWII espionage series. A gripping thriller rich in history and suspense.">
+  <NavBar activePage="books" />
+
+  <main class="pt-[140px]">
+    <BookHero />
+    <TechSpecs />
+    <BookTestimonials />
+    <BookInterstitial />
+    <BookRequisition />
+  </main>
+
+  <Footer />
+</Layout>

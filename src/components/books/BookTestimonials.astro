@@ -1,0 +1,41 @@
+---
+const testimonials = [
+  {
+    quote: 'Gripping WWII espionage thriller rich in history and suspense.',
+    source: 'BookLife Reviews',
+    outlet: 'Publishers Weekly',
+  },
+  {
+    quote: 'A propulsive, masterfully crafted WWII thriller.',
+    source: 'Chris Wallace',
+    outlet: 'CNN',
+  },
+  {
+    quote: 'One of the more underrated spy franchises set during WWII.',
+    source: 'Ryan Steck',
+    outlet: 'The Real Book Spy',
+  },
+];
+---
+
+<section class="py-[120px] bg-black">
+  <div class="max-w-[1296px] mx-auto px-16">
+    <div class="flex items-center gap-4 mb-16">
+      <div class="w-10 h-0.5 bg-secondary"></div>
+      <h2 class="font-label-caps text-label-caps text-secondary tracking-widest">WHAT READERS ARE SAYING</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant">
+      {testimonials.map(({ quote, source, outlet }) => (
+        <div class="bg-black p-12 flex flex-col gap-8 hover:bg-surface-container transition-colors duration-300">
+          <div class="text-5xl text-secondary font-serif leading-none select-none">&ldquo;</div>
+          <p class="font-body-lg text-body-lg text-primary leading-relaxed flex-1 italic">{quote}</p>
+          <div>
+            <p class="font-label-caps text-label-caps text-secondary tracking-widest">{source}</p>
+            <p class="font-data-mono text-data-mono text-on-surface-variant mt-1">{outlet}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,57 @@
+---
+---
+
+<section class="col-span-12 lg:col-span-7 bg-surface-container p-12 border border-outline-variant">
+  <form class="space-y-10" method="POST">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex flex-col gap-3">
+        <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">YOUR NAME</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant transition-colors"
+        />
+      </div>
+      <div class="flex flex-col gap-3">
+        <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">EMAIL ADDRESS</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant transition-colors"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">SUBJECT</label>
+      <select
+        name="subject"
+        class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary appearance-none transition-colors"
+      >
+        <option>Literary Representation</option>
+        <option>Media &amp; Film Inquiries</option>
+        <option>Speaking Engagements</option>
+        <option>General Correspondence</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest">YOUR MESSAGE</label>
+      <textarea
+        name="message"
+        rows="6"
+        placeholder="Write your message here..."
+        class="bg-surface-container-high border-b border-outline-variant focus:border-secondary outline-none py-4 px-3 font-body-md text-body-md text-primary placeholder:text-on-surface-variant resize-none transition-colors"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-secondary text-white py-5 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
+    >
+      SEND MESSAGE
+    </button>
+  </form>
+</section>

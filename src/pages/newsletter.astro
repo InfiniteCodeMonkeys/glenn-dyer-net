@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import FeedHero from '../components/newsletter/FeedHero.astro';
+import FeaturedAnalysis from '../components/newsletter/FeaturedAnalysis.astro';
+import FeedGrid from '../components/newsletter/FeedGrid.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+---
+
+<Layout title="Newsletter | Glenn Dyer" description="Research notes, book news, and exclusive content from Glenn Dyer, author of the Conor Thorn WWII espionage series.">
+  <NavBar activePage="newsletter" />
+
+  <main class="max-w-[1280px] mx-auto px-16 py-24 mt-20">
+    <FeedHero />
+    <FeaturedAnalysis />
+    <FeedGrid />
+    <NewsletterCTA />
+  </main>
+
+  <Footer />
+</Layout>

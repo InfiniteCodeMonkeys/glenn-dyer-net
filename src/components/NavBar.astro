@@ -1,0 +1,43 @@
+---
+interface Props {
+  activePage?: 'home' | 'books' | 'about' | 'newsletter' | 'contact';
+}
+
+const { activePage } = Astro.props;
+
+const links = [
+  { href: '/books/trust-no-one', label: 'Books', key: 'books' },
+  { href: '/about', label: 'About', key: 'about' },
+  { href: '/newsletter', label: 'Newsletter', key: 'newsletter' },
+  { href: '/contact', label: 'Contact', key: 'contact' },
+];
+---
+
+<nav class="bg-black flex justify-between items-center w-full px-16 py-7 border-b-2 border-secondary fixed top-0 z-50">
+  <a href="/" class="text-xl font-bold tracking-widest uppercase text-white font-headline-md no-underline hover:text-secondary transition-colors">
+    GLENN DYER
+  </a>
+
+  <div class="hidden md:flex items-center space-x-10">
+    {links.map(({ href, label, key }) => (
+      <a
+        href={href}
+        class={[
+          'font-label-caps text-label-caps tracking-widest transition-colors duration-200 uppercase',
+          activePage === key
+            ? 'text-secondary'
+            : 'text-zinc-400 hover:text-white',
+        ].join(' ')}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+
+  <a
+    href="/books/trust-no-one"
+    class="bg-secondary text-white px-7 py-3 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
+  >
+    ORDER NOW
+  </a>
+</nav>

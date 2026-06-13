@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import ContactHeader from '../components/contact/ContactHeader.astro';
+import ContactForm from '../components/contact/ContactForm.astro';
+import ContactProtocols from '../components/contact/ContactProtocols.astro';
+---
+
+<Layout title="Contact | Glenn Dyer" description="Contact Glenn Dyer for literary inquiries, media appearances, speaking engagements, or general correspondence.">
+  <NavBar activePage="contact" />
+
+  <main class="max-w-[1280px] mx-auto px-16 py-24 min-h-screen">
+    <ContactHeader />
+
+    <div class="grid grid-cols-12 gap-8">
+      <ContactForm />
+      <ContactProtocols />
+    </div>
+
+    <div class="mt-[120px] grid grid-cols-12">
+      <div class="col-span-12 md:col-start-4 md:col-span-6 text-center space-y-6">
+        <hr class="border-outline-variant w-12 mx-auto" />
+        <p class="font-body-md text-body-md text-on-surface-variant italic">
+          "The most dramatic events in WWII happened in the shadows—and that's exactly where I want to take readers."
+        </p>
+        <p class="font-data-mono text-[11px] uppercase tracking-widest text-zinc-400">
+          — Glenn Dyer
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

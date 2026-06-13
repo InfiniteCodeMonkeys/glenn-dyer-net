@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import DossierHero from '../components/about/DossierHero.astro';
+import SubjectNarrative from '../components/about/SubjectNarrative.astro';
+import MissionStatement from '../components/about/MissionStatement.astro';
+import OperationalTimeline from '../components/about/OperationalTimeline.astro';
+import AnalyticalSummary from '../components/about/AnalyticalSummary.astro';
+---
+
+<Layout title="About Glenn Dyer | Author of the Conor Thorn Series" description="Learn about Glenn Dyer, author of the acclaimed Conor Thorn WWII espionage thriller series.">
+  <NavBar activePage="about" />
+
+  <main class="pt-[160px]">
+    <DossierHero />
+    <SubjectNarrative />
+    <MissionStatement />
+    <OperationalTimeline />
+    <AnalyticalSummary />
+  </main>
+
+  <Footer />
+</Layout>

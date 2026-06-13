@@ -1,0 +1,63 @@
+---
+const sidebarArticles = [
+  {
+    date: 'MAY 2024',
+    title: "Nobody's Fool: Book Five Announced",
+    excerpt: 'Glenn Dyer reveals the title and cover of the fifth Conor Thorn novel.',
+  },
+  {
+    date: 'MARCH 2024',
+    title: 'Free Short Story: Available Now',
+    excerpt: 'Download "A Visit to the Ogre in His Den"—exclusive for newsletter subscribers.',
+  },
+  {
+    date: 'JANUARY 2024',
+    title: 'The Conor Thorn Box Set',
+    excerpt: 'All four novels bundled for $9.99—the perfect introduction to the series.',
+  },
+];
+---
+
+<section class="py-[120px] bg-surface">
+  <div class="max-w-[1296px] mx-auto px-16">
+
+    <div class="flex justify-between items-center mb-16">
+      <div class="flex items-center gap-4">
+        <div class="w-10 h-0.5 bg-secondary"></div>
+        <h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">NEWS & EVENTS</h2>
+      </div>
+      <a href="/newsletter" class="font-label-caps text-label-caps text-secondary tracking-widest hover:text-white transition-colors">
+        VIEW ALL →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-12 gap-8">
+      <article class="col-span-12 lg:col-span-8 group cursor-pointer">
+        <div class="relative overflow-hidden mb-6">
+          <img
+            class="w-full aspect-video object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAas7jJVS3CKozPJuSc5tewUKraO8Easr7VtvWFfNbFQS_j1IFUmssFrdL0PjrXXevWeSJsmPnmpwUjDGX4fHDCFcRjJenwvU0sd5FknOGk6Ubf5rLM2U8MsiMAIHkhEwbNXXGbjaJDeAy7bM6qKRdpp-B2wn0IA2HO-Ax3LW-BROSpUsHDM8QeJplWOXkb4K7DA46gdRBpDsR5sSv-PXIgfLgT1FzmRea3_xS054Bhyr_gz8tFXlL5xEnOt9Nfdbnla8KJgbZmrqCB"
+            alt="Vintage typewriter and wartime documents"
+          />
+        </div>
+        <span class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest">JUNE 2024 · BEHIND THE BOOKS</span>
+        <h3 class="font-headline-md text-headline-md text-primary font-bold mb-4 group-hover:text-secondary transition-colors tracking-tight">
+          The Real History Behind the Conor Thorn Series
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+          Glenn Dyer shares the declassified OSS records, wartime dispatches, and forgotten personal accounts that inspire each novel in the Conor Thorn series.
+        </p>
+      </article>
+
+      <div class="col-span-12 lg:col-span-4 flex flex-col gap-10">
+        {sidebarArticles.map(({ date, title, excerpt }, i) => (
+          <article class={`group cursor-pointer ${i < sidebarArticles.length - 1 ? 'border-b border-outline-variant pb-10' : ''}`}>
+            <span class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest">{date}</span>
+            <h4 class="font-headline-md text-lg text-primary font-bold mb-2 group-hover:text-secondary transition-colors">{title}</h4>
+            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">{excerpt}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
