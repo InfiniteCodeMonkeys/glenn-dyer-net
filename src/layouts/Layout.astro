@@ -9,7 +9,7 @@ interface Props {
 const { title, description = 'Glenn Dyer — Author' } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +30,7 @@ const { title, description = 'Glenn Dyer — Author' } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+  <body class="bg-background text-on-surface font-body-md antialiased">
     <slot />
   </body>
 </html>

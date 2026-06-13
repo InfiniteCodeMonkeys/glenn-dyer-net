@@ -15,7 +15,7 @@ const posts = await getNewsletterPosts();
 <Layout title="Newsletter | Glenn Dyer" description="Research notes, book news, and exclusive content from Glenn Dyer, author of the Conor Thorn WWII espionage series.">
   <NavBar activePage="newsletter" />
 
-  <main class="max-w-[1280px] mx-auto px-4 md:px-16 py-12 md:py-24 mt-20">
+  <main class="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16 py-24 mt-20">
     <FeedHero />
     <FeaturedAnalysis />
     <FeedGrid posts={posts} />

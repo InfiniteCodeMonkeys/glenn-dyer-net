@@ -13,91 +13,31 @@ const links = [
 ];
 ---
 
-<nav class="bg-white w-full border-b-2 border-secondary fixed top-0 z-50">
-  <div class="flex justify-between items-center px-4 md:px-16 py-5 md:py-7">
-    <a href="/" class="text-xl font-bold tracking-widest uppercase text-black font-headline-md no-underline hover:text-secondary transition-colors">
-      GLENN DYER
-    </a>
+<nav class="bg-white flex justify-between items-center w-full px-4 md:px-8 lg:px-16 py-7 border-b-2 border-secondary fixed top-0 z-50">
+  <a href="/" class="text-xl font-bold tracking-widest uppercase text-black font-headline-md no-underline hover:text-secondary transition-colors">
+    GLENN DYER
+  </a>
 
-    <div class="hidden md:flex items-center space-x-10">
-      {links.map(({ href, label, key }) => (
-        <a
-          href={href}
-          class={[
-            'font-label-caps text-label-caps tracking-widest transition-colors duration-200 uppercase',
-            activePage === key
-              ? 'text-secondary'
-              : 'text-zinc-500 hover:text-black',
-          ].join(' ')}
-        >
-          {label}
-        </a>
-      ))}
-    </div>
-
-    <a
-      href="/books/trust-no-one"
-      class="hidden md:inline-block bg-secondary text-white px-7 py-3 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
-    >
-      ORDER NOW
-    </a>
-
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden p-2 text-primary hover:text-secondary transition-colors"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-    >
-      <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-    </button>
-  </div>
-
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden border-t border-outline-variant bg-white px-4 pb-6"
-  >
-    <div class="flex flex-col gap-1 pt-4">
-      {links.map(({ href, label, key }) => (
-        <a
-          href={href}
-          class={[
-            'font-label-caps text-label-caps tracking-widest uppercase py-3 border-b border-outline-variant transition-colors duration-200',
-            activePage === key
-              ? 'text-secondary'
-              : 'text-zinc-500 hover:text-black',
-          ].join(' ')}
-        >
-          {label}
-        </a>
-      ))}
+  <div class="hidden md:flex items-center space-x-10">
+    {links.map(({ href, label, key }) => (
       <a
-        href="/books/trust-no-one"
-        class="mt-4 bg-secondary text-white px-7 py-4 font-label-caps text-label-caps tracking-widest text-center hover:bg-black transition-colors duration-200"
+        href={href}
+        class={[
+          'font-label-caps text-label-caps tracking-widest transition-colors duration-200 uppercase',
+          activePage === key
+            ? 'text-secondary'
+            : 'text-zinc-500 hover:text-black',
+        ].join(' ')}
       >
-        ORDER NOW
+        {label}
       </a>
-    </div>
+    ))}
   </div>
+
+  <a
+    href="/books/trust-no-one"
+    class="bg-secondary text-white px-7 py-3 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200"
+  >
+    ORDER NOW
+  </a>
 </nav>
-
-<script>
-  const btn = document.getElementById('mobile-menu-btn') as HTMLButtonElement;
-  const menu = document.getElementById('mobile-menu') as HTMLDivElement;
-  const icon = document.getElementById('mobile-menu-icon') as HTMLSpanElement;
-
-  btn?.addEventListener('click', () => {
-    const isOpen = !menu.classList.contains('hidden');
-    menu.classList.toggle('hidden');
-    icon.textContent = isOpen ? 'menu' : 'close';
-    btn.setAttribute('aria-expanded', String(!isOpen));
-  });
-
-  // Close menu when a link is clicked
-  menu?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      icon.textContent = 'menu';
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>
