@@ -9,6 +9,7 @@ import BookInterstitial from '../../components/books/BookInterstitial.astro';
 import BookRequisition from '../../components/books/BookRequisition.astro';
 import { getBooks } from '../../data/books';
 
+export const prerender = true;
 export async function getStaticPaths() {
   const books = await getBooks();
   return books.map((book) => ({

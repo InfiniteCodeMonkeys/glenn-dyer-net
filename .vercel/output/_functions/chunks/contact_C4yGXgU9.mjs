@@ -13,6 +13,28 @@ const POST = async ({ request }) => {
       headers: { "Content-Type": "application/json" }
     });
   }
+  const turnstileToken = data.get("cf-turnstile-response")?.toString();
+  if (!turnstileToken) {
+    return new Response(JSON.stringify({ error: "Please complete the security check." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
+  const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      secret: undefined                                    ,
+      response: turnstileToken
+    })
+  });
+  const verifyData = await verifyRes.json();
+  if (!verifyData.success) {
+    return new Response(JSON.stringify({ error: "Security check failed. Please try again." }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" }
+    });
+  }
   const resend = new Resend(undefined                              );
   const { error } = await resend.emails.send({
     from: "Contact Form <contact@glenndyer.net>",
