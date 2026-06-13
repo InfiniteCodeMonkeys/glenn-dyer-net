@@ -14,23 +14,23 @@ const quotes = [
       <span class="font-label-caps text-label-caps text-secondary tracking-widest">READER PRAISE</span>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-outline-variant">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-800">
       {quotes.map(({ text, source, outlet }) => (
-        <div class="bg-black p-12 flex flex-col gap-8 hover:bg-surface-container transition-colors duration-300">
+        <div class="bg-black p-12 flex flex-col gap-8 hover:bg-zinc-900 transition-colors duration-300">
           <div class="text-5xl text-secondary font-serif leading-none select-none">&ldquo;</div>
-          <p class="font-body-lg text-body-lg text-primary leading-relaxed flex-1">
+          <p class="font-body-lg text-body-lg text-white leading-relaxed flex-1">
             {text}
           </p>
           <div>
             <p class="font-label-caps text-label-caps text-secondary tracking-widest">{source}</p>
-            <p class="font-data-mono text-data-mono text-on-surface-variant mt-1">{outlet}</p>
+            <p class="font-data-mono text-data-mono text-zinc-400 mt-1">{outlet}</p>
           </div>
         </div>
       ))}
     </div>
 
     <div class="mt-16 text-center">
-      <p class="font-body-lg text-body-lg text-on-surface-variant italic">
+      <p class="font-body-lg text-body-lg text-zinc-400 italic">
         "Perfect fit for fans of Alan Furst" · Endorsed by Steve Berry, Jack Carr &amp; Chris Wallace
       </p>
     </div>

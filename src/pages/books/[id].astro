@@ -7,14 +7,21 @@ import TechSpecs from '../../components/books/TechSpecs.astro';
 import BookTestimonials from '../../components/books/BookTestimonials.astro';
 import BookInterstitial from '../../components/books/BookInterstitial.astro';
 import BookRequisition from '../../components/books/BookRequisition.astro';
-import { getBook } from '../../data/books';
+import { books } from '../../data/books';
 
-const book = getBook('trust-no-one')!;
+export function getStaticPaths() {
+  return books.map((book) => ({
+    params: { id: book.id },
+    props: { book },
+  }));
+}
+
+const { book } = Astro.props;
 ---
 
 <Layout
-  title="Trust No One | Glenn Dyer"
-  description="Trust No One—Book Four in Glenn Dyer's Conor Thorn WWII espionage series. A gripping thriller rich in history and suspense."
+  title={`${book.title} | Glenn Dyer`}
+  description={`${book.title}—Book ${book.number} in Glenn Dyer's Conor Thorn WWII espionage series. ${book.briefDescription}`}
 >
   <NavBar activePage="books" />
 

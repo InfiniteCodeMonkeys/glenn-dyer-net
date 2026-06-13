@@ -1,4 +1,12 @@
 ---
+import type { Book } from '../../data/books';
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+
 const formats = [
   { icon: 'menu_book', label: 'HARDCOVER', href: '#' },
   { icon: 'book', label: 'PAPERBACK', href: '#' },
@@ -11,7 +19,9 @@ const formats = [
   <div class="max-w-[1296px] mx-auto px-16 text-center">
     <div class="w-10 h-0.5 bg-secondary mx-auto mb-8"></div>
     <h3 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight mb-4">Get Your Copy</h3>
-    <p class="font-body-lg text-body-lg text-on-surface-variant mb-16 leading-relaxed">Available in all formats, wherever books are sold.</p>
+    <p class="font-body-lg text-body-lg text-on-surface-variant mb-16 leading-relaxed">
+      <em>{book.title}</em> is available in all formats, wherever books are sold.
+    </p>
 
     <div class="flex flex-col md:flex-row justify-center items-center gap-10 mb-20">
       {formats.map(({ icon, label, href }) => (
@@ -29,7 +39,7 @@ const formats = [
       <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">Get all four Conor Thorn novels for just $9.99—the perfect way to start the series.</p>
       <a
         href="#"
-        class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors"
+        class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
       >
         GET THE BOX SET
       </a>

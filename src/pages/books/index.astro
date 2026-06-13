@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/NavBar.astro';
+import Footer from '../../components/Footer.astro';
+import { books } from '../../data/books';
+---
+
+<Layout
+  title="Books | Glenn Dyer"
+  description="The complete Conor Thorn series by Glenn Dyer—five WWII espionage thrillers praised by Steve Berry, Jack Carr, and Chris Wallace."
+>
+  <NavBar activePage="books" />
+
+  <main class="pt-[140px] pb-[120px]">
+    <div class="max-w-[1296px] mx-auto px-16">
+
+      <div class="mb-20">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-10 h-0.5 bg-secondary"></div>
+          <span class="font-label-caps text-label-caps text-secondary tracking-widest">GLENN DYER</span>
+        </div>
+        <h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight mb-6">The Conor Thorn Series</h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+          Five WWII espionage thrillers praised for meticulous research and pulse-pounding suspense. Available in ebook, paperback, hardcover, and audiobook.
+        </p>
+      </div>
+
+      <div class="flex flex-col divide-y divide-outline-variant">
+        {books.map((book, i) => (
+          <article class="grid grid-cols-12 gap-8 py-16 items-center group">
+
+            <div class="col-span-12 md:col-span-3">
+              <div class="hard-shadow-sm">
+                <img
+                  src={book.coverImage}
+                  alt={`${book.title} book cover`}
+                  class="w-full aspect-[2/3] object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            </div>
+
+            <div class="col-span-12 md:col-span-9 md:pl-8">
+              <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">
+                BOOK {book.number} · {book.year}
+              </p>
+              <h2 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight mb-6">
+                {book.title}
+              </h2>
+              <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8 max-w-2xl">
+                {book.briefDescription}
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <a
+                  href="#"
+                  class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors duration-200"
+                >
+                  BUY NOW
+                </a>
+                <a
+                  href={`/books/${book.id}`}
+                  class="border border-outline-variant text-on-surface-variant px-8 py-3 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors duration-200"
+                >
+                  LEARN MORE
+                </a>
+              </div>
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-20 border border-secondary p-12 max-w-2xl">
+        <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">BOX SET — BOOKS 1–4</p>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+          Get the first four Conor Thorn novels for just $9.99—the perfect way to start the series.
+        </p>
+        <a
+          href="#"
+          class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
+        >
+          GET THE BOX SET
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

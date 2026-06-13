@@ -6,15 +6,15 @@ interface Props {
 const { activePage } = Astro.props;
 
 const links = [
-  { href: '/books/trust-no-one', label: 'Books', key: 'books' },
+  { href: '/books', label: 'Books', key: 'books' },
   { href: '/about', label: 'About', key: 'about' },
   { href: '/newsletter', label: 'Newsletter', key: 'newsletter' },
   { href: '/contact', label: 'Contact', key: 'contact' },
 ];
 ---
 
-<nav class="bg-black flex justify-between items-center w-full px-16 py-7 border-b-2 border-secondary fixed top-0 z-50">
-  <a href="/" class="text-xl font-bold tracking-widest uppercase text-white font-headline-md no-underline hover:text-secondary transition-colors">
+<nav class="bg-white flex justify-between items-center w-full px-16 py-7 border-b-2 border-secondary fixed top-0 z-50">
+  <a href="/" class="text-xl font-bold tracking-widest uppercase text-black font-headline-md no-underline hover:text-secondary transition-colors">
     GLENN DYER
   </a>
 
@@ -26,7 +26,7 @@ const links = [
           'font-label-caps text-label-caps tracking-widest transition-colors duration-200 uppercase',
           activePage === key
             ? 'text-secondary'
-            : 'text-zinc-400 hover:text-white',
+            : 'text-zinc-500 hover:text-black',
         ].join(' ')}
       >
         {label}

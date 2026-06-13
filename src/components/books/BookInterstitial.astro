@@ -1,4 +1,11 @@
 ---
+import type { Book } from '../../data/books';
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
 ---
 
 <section class="w-full h-[450px] relative overflow-hidden bg-black">
@@ -10,8 +17,8 @@
   <div class="absolute inset-0 flex items-center justify-center">
     <div class="text-center text-white px-16 max-w-4xl">
       <div class="w-10 h-0.5 bg-secondary mx-auto mb-8"></div>
-      <h2 class="font-headline-lg text-headline-lg text-primary font-bold mb-6 tracking-tight">
-        "Perfect fit for fans of Alan Furst."
+      <h2 class="font-headline-lg text-headline-lg text-white font-bold mb-6 tracking-tight">
+        "{book.interstitialQuote}"
       </h2>
       <p class="font-label-caps text-label-caps text-zinc-500 tracking-widest">PRAISE FOR THE CONOR THORN SERIES</p>
     </div>

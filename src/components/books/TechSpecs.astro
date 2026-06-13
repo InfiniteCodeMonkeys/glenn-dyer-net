@@ -1,10 +1,18 @@
 ---
+import type { Book } from '../../data/books';
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+
 const specs = [
-  { label: 'Series', value: 'The Conor Thorn Series — Book Four' },
-  { label: 'Genre', value: 'WWII Espionage Thriller' },
+  { label: 'Series', value: `The Conor Thorn Series — Book ${book.number}` },
+  { label: 'Genre', value: book.genre },
+  { label: 'Setting', value: book.setting },
   { label: 'Formats', value: 'Hardcover · Paperback · Ebook · Audiobook' },
   { label: 'Box Set', value: 'Books 1–4 available for $9.99' },
-  { label: 'Setting', value: 'Occupied France, 1944' },
 ];
 ---
 
@@ -17,7 +25,7 @@ const specs = [
           <div class="w-10 h-0.5 bg-secondary"></div>
           <span class="font-label-caps text-label-caps text-secondary tracking-widest">BOOK DETAILS</span>
         </div>
-        <h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">Trust No One</h2>
+        <h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">{book.title}</h2>
         <p class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
           Available wherever books are sold, in every format.
         </p>

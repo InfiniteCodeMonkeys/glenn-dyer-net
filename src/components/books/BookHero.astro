@@ -1,4 +1,11 @@
 ---
+import type { Book } from '../../data/books';
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
 ---
 
 <section class="max-w-[1296px] mx-auto px-16 grid grid-cols-12 gap-8 mb-[120px]">
@@ -7,32 +14,36 @@
     <div class="hard-shadow">
       <img
         class="w-full aspect-[2/3] object-cover"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyxHnERIZmAvGs59QJJIGIaP9SV-DiD7Yzra26VHtaqB8ZQNlBHzyiFUWsNUCla7kJNPlXUftpDC289-CzNR9vTRVduZ_rINivYLQJCqhitzB4nv5BdizxapWlgV5cCLCttrPNlt5gWuIHiqotsU8MQJgg8Q1uMkTd4WvjF0BttQmIbaCUHP1_flgi6MyFogBl6KFxDFllvsu5LQ7veVBlq5gfOLuKZIv7kMnLHpmAhzSc6JwhTO2Yq-7UbJ9iG25pXAB1_j0wQpgQ"
-        alt="Trust No One book cover"
+        src={book.coverImage}
+        alt={`${book.title} book cover`}
       />
     </div>
     <div class="mt-6 flex items-center justify-between font-label-caps text-label-caps text-secondary tracking-widest border-b border-outline-variant pb-4">
       <span>THE CONOR THORN SERIES</span>
-      <span>BOOK FOUR</span>
+      <span>BOOK {book.number}</span>
     </div>
   </div>
 
   <div class="col-span-12 lg:col-span-7 lg:pl-12 flex flex-col justify-center">
     <div class="flex items-center gap-4 mb-6">
       <div class="w-10 h-0.5 bg-secondary"></div>
-      <span class="font-label-caps text-label-caps text-secondary tracking-widest">WWII ESPIONAGE THRILLER</span>
+      <span class="font-label-caps text-label-caps text-secondary tracking-widest">{book.genre}</span>
     </div>
-    <h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight mb-3">Trust No One</h1>
-    <p class="font-headline-md text-xl text-on-surface-variant font-normal mb-10">by Glenn Dyer</p>
+    <h1 class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight mb-3">
+      {book.title}
+    </h1>
+    <p class="font-headline-md text-xl text-on-surface-variant font-normal mb-10">
+      by Glenn Dyer
+    </p>
 
     <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 leading-relaxed">
-      When a decoded German transmission points to a traitor inside Allied command, OSS agent Conor Thorn is dispatched into occupied France. In a shadow war where every contact could be compromised and every safe house could be a trap, Thorn must uncover the truth before a catastrophic Allied operation is destroyed from within.
+      {book.fullDescription}
     </p>
 
     <div class="flex flex-wrap gap-4">
       <a
         href="#order"
-        class="bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-white hover:text-black transition-colors duration-200 flex items-center gap-3"
+        class="bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black hover:text-white transition-colors duration-200 flex items-center gap-3"
       >
         ORDER NOW <span class="material-symbols-outlined text-sm">shopping_cart</span>
       </a>
