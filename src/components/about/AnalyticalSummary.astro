@@ -7,7 +7,7 @@ const rows = [
 ];
 ---
 
-<section class="px-16 py-[120px] bg-surface-container-low">
+<section class="px-4 md:px-16 py-16 md:py-[120px] bg-surface-container-low">
   <div class="max-w-[1296px] mx-auto">
     <div class="flex items-center gap-4 mb-12">
       <div class="w-10 h-0.5 bg-secondary"></div>
@@ -18,17 +18,17 @@ const rows = [
         <table class="w-full text-left">
           <thead>
             <tr class="border-b border-outline-variant bg-surface-container">
-              <th class="p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Category</th>
-              <th class="p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Details</th>
-              <th class="p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Notes</th>
+              <th class="p-4 md:p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Category</th>
+              <th class="p-4 md:p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Details</th>
+              <th class="p-4 md:p-8 font-label-caps text-label-caps text-on-surface-variant tracking-widest">Notes</th>
             </tr>
           </thead>
           <tbody class="font-body-md text-body-md">
             {rows.map(({ metric, value, notes, highlight }) => (
               <tr class="border-b border-outline-variant hover:bg-surface-container transition-colors">
-                <td class="p-8 text-on-surface-variant">{metric}</td>
-                <td class={`p-8 ${highlight ? 'text-secondary font-bold' : 'text-primary'}`}>{value}</td>
-                <td class="p-8 text-on-surface-variant">{notes}</td>
+                <td class="p-4 md:p-8 text-on-surface-variant">{metric}</td>
+                <td class={`p-4 md:p-8 ${highlight ? 'text-secondary font-bold' : 'text-primary'}`}>{value}</td>
+                <td class="p-4 md:p-8 text-on-surface-variant">{notes}</td>
               </tr>
             ))}
           </tbody>
