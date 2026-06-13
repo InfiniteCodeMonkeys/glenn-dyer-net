@@ -26,9 +26,10 @@ export default config({
         title: fields.slug({ name: { label: 'Title' } }),
         number: fields.integer({ label: 'Book Number', validation: { isRequired: true, min: 1 } }),
         year: fields.text({ label: 'Publication Year' }),
-        coverImage: fields.text({
-          label: 'Cover Image Path',
-          description: 'Absolute path from the public directory, e.g. /trust_no_one_2d.jpg',
+        coverImage: fields.image({
+          label: 'Cover Image',
+          directory: 'public/books',
+          publicPath: '/books/',
         }),
         briefDescription: fields.text({ label: 'Brief Description (listing page)', multiline: true }),
         fullDescription: fields.text({ label: 'Full Description (detail page)', multiline: true }),
@@ -59,9 +60,10 @@ export default config({
         date: fields.date({ label: 'Date' }),
         category: fields.text({ label: 'Category', description: 'e.g. BEHIND THE BOOKS' }),
         excerpt: fields.text({ label: 'Excerpt', multiline: true }),
-        image: fields.text({
-          label: 'Image Path',
-          description: 'Absolute path from the public directory, e.g. /my-image.jpg',
+        image: fields.image({
+          label: 'Image',
+          directory: 'public/newsletter',
+          publicPath: '/newsletter/',
         }),
         imageAlt: fields.text({ label: 'Image Alt Text' }),
         content: fields.text({ label: 'Content (Markdown)', multiline: true }),
@@ -80,9 +82,10 @@ export default config({
           description: 'e.g. THE CONOR THORN SERIES · BOOK FOUR',
         }),
         description: fields.text({ label: 'Hero Description', multiline: true }),
-        backgroundImage: fields.text({
-          label: 'Background Image Path',
-          description: 'Absolute path from the public directory',
+        backgroundImage: fields.image({
+          label: 'Background Image',
+          directory: 'public/carousel',
+          publicPath: '/carousel/',
         }),
         buyLink: fields.url({ label: 'Buy Link' }),
         bookId: fields.text({
