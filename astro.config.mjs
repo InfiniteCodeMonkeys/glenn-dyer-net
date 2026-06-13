@@ -9,6 +9,10 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
   integrations: [react(), keystatic()],
+  redirects: {
+    '/admin': '/keystatic',
+    '/admin/[...path]': '/keystatic/[...path]',
+  },
 
   vite: {
     plugins: [tailwindcss()],
