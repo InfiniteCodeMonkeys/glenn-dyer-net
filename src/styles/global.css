@@ -11,18 +11,18 @@
   --radius-3xl: 0px;
   --radius-full: 9999px;
 
-  /* ---- LIGHT THEME COLORS (white/black/red) ---- */
+  /* ---- DARK THEME COLORS (off-black/warm-white/red) ---- */
 
-  /* Primary = near-black (text/borders on light) */
-  --color-primary: #111111;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #1a1a1a;
-  --color-on-primary-container: #a0a0a0;
-  --color-primary-fixed: #e8e8e8;
-  --color-primary-fixed-dim: #d4d4d4;
-  --color-on-primary-fixed: #111111;
-  --color-on-primary-fixed-variant: #555555;
-  --color-inverse-primary: #e8e8e8;
+  /* Primary = warm off-white (text/borders on dark) */
+  --color-primary: #e8e4de;
+  --color-on-primary: #141210;
+  --color-primary-container: #2e2b27;
+  --color-on-primary-container: #c4bfb8;
+  --color-primary-fixed: #2e2b27;
+  --color-primary-fixed-dim: #252220;
+  --color-on-primary-fixed: #e8e4de;
+  --color-on-primary-fixed-variant: #a09890;
+  --color-inverse-primary: #141210;
 
   /* Secondary = red accent */
   --color-secondary: #b81209;
@@ -35,33 +35,33 @@
   --color-on-secondary-fixed-variant: #8a0d07;
 
   /* Tertiary = same as primary */
-  --color-tertiary: #111111;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #1a1a1a;
-  --color-on-tertiary-container: #a0a0a0;
+  --color-tertiary: #e8e4de;
+  --color-on-tertiary: #141210;
+  --color-tertiary-container: #2e2b27;
+  --color-on-tertiary-container: #c4bfb8;
 
-  /* Light surfaces — subtle tonal steps */
-  --color-surface: #f8f8f8;
-  --color-surface-dim: #e8e8e8;
-  --color-surface-bright: #ffffff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f4f4f4;
-  --color-surface-container: #eeeeee;
-  --color-surface-container-high: #e6e6e6;
-  --color-surface-container-highest: #dedede;
-  --color-surface-variant: #ebebeb;
-  --color-on-surface: #111111;
-  --color-on-surface-variant: #555555;
+  /* Dark surfaces — subtle tonal steps above #141210 */
+  --color-surface: #1c1a17;
+  --color-surface-dim: #100e0c;
+  --color-surface-bright: #302d29;
+  --color-surface-container-lowest: #0f0e0c;
+  --color-surface-container-low: #1a1815;
+  --color-surface-container: #201e1b;
+  --color-surface-container-high: #272420;
+  --color-surface-container-highest: #2e2b27;
+  --color-surface-variant: #272420;
+  --color-on-surface: #e8e4de;
+  --color-on-surface-variant: #a09890;
   --color-surface-tint: #b81209;
 
-  --color-inverse-surface: #111111;
-  --color-inverse-on-surface: #f8f8f8;
+  --color-inverse-surface: #e8e4de;
+  --color-inverse-on-surface: #141210;
 
-  --color-outline: #999999;
-  --color-outline-variant: #d4d4d4;
+  --color-outline: #5a5450;
+  --color-outline-variant: #302d29;
 
-  --color-background: #ffffff;
-  --color-on-background: #111111;
+  --color-background: #141210;
+  --color-on-background: #e8e4de;
 
   --color-error: #ba1a1a;
   --color-on-error: #ffffff;
