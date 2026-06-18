@@ -43,7 +43,7 @@ const books = await getBooks();
                     books.map((book) => (
                         <article class="grid grid-cols-12 gap-4 md:gap-8 py-16 items-center group">
                             <div class="col-span-12 md:col-span-3">
-                                <div class="hard-shadow-sm">
+                                <div class:list={[{ "hard-shadow-sm": book.coverImage !== "/bookset_3d.png" }]}>
                                     <img
                                         src={book.coverImage}
                                         alt={`${book.title} book cover`}
@@ -52,7 +52,9 @@ const books = await getBooks();
                                             {
                                                 "aspect-auto":
                                                     book.coverImage ===
-                                                    "/placeholder.png",
+                                                    "/placeholder.png" ||
+                                                    book.coverImage ===
+                                                    "/bookset_3d.png",
                                             },
                                         ]}
                                     />
@@ -60,8 +62,8 @@ const books = await getBooks();
                             </div>
 
                             <div class="col-span-12 md:col-span-9 md:pl-8">
-                                <p class="font-label-caps text-sm text-secondary tracking-widest mb-3">
-                                    BOOK {book.number} · {book.year}
+                                <p class="font-label-caps text-base text-secondary tracking-widest mb-3">
+                                    {book.coverImage === "/bookset_3d.png" ? "BOX SET" : `BOOK ${book.number} · ${book.year}`}
                                 </p>
                                 <h2 class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight mb-6">
                                     {book.title}
@@ -89,25 +91,6 @@ const books = await getBooks();
                 }
             </div>
 
-            <div class="mt-20 border border-secondary p-12 max-w-2xl">
-                <p
-                    class="font-label-caps text-label-caps text-secondary tracking-widest mb-3"
-                >
-                    BOX SET — BOOKS 1–4
-                </p>
-                <p
-                    class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed"
-                >
-                    Get the first four Conor Thorn novels for just $9.99—the
-                    perfect way to start the series.
-                </p>
-                <a
-                    href="#"
-                    class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
-                >
-                    GET THE BOX SET
-                </a>
-            </div>
         </div>
     </main>
 
