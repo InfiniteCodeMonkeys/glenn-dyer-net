@@ -2,18 +2,39 @@
 const quotes = [
     {
         text: "One of the more underrated spy franchises set during WWII.",
-        source: "Ryan Steck",
+        sourceName: "Ryan Steck",
+        book: null,
         outlet: "The Real Book Spy",
     },
     {
         text: "Gripping WWII espionage thriller rich in history and suspense.",
-        source: "BookLife Reviews",
+        sourceName: "BookLife Reviews",
+        book: "On Trust No One",
         outlet: "Publishers Weekly",
     },
     {
         text: "A propulsive, masterfully crafted WWII thriller.",
-        source: "Chris Wallace",
+        sourceName: "Chris Wallace, Veteran Journalist",
+        book: "On Trust No One",
         outlet: "CNN",
+    },
+    {
+        text: "Atmospheric and tense, with plenty of treachery and a heavy dose of history.",
+        sourceName: "Steve Berry",
+        book: "The Torch Betrayal",
+        outlet: "New York Times Bestselling Author",
+    },
+    {
+        text: "Brilliantly researched thriller bringing WWII espionage to life with expectations exceeded.",
+        sourceName: "Jack Carr",
+        book: "The Ultra Betrayal",
+        outlet: "New York Times Bestselling Author",
+    },
+    {
+        text: "This rip-roaring, Nazi-punching World War II thriller will keep spy fans engaged.",
+        sourceName: "BookLife",
+        book: "The Unquiet Genius",
+        outlet: "Publishers Weekly",
     },
 ];
 ---
@@ -60,7 +81,12 @@ const quotes = [
                                 </p>
                                 <div>
                                     <p class="font-label-caps text-base font-bold text-secondary tracking-widest uppercase">
-                                        {q.source}
+                                        {q.sourceName}
+                                        {q.book && (
+                                            <>
+                                                , <em>{q.book}</em>
+                                            </>
+                                        )}
                                     </p>
                                     <p class="font-data-mono text-data-mono text-zinc-400 mt-1">
                                         {q.outlet}
