@@ -2,12 +2,12 @@ import { config, collection, fields } from '@keystatic/core';
 
 export default config({
   storage:
-    process.env.KEYSTATIC_STORAGE_KIND === 'github'
+    import.meta.env.PUBLIC_KEYSTATIC_STORAGE_KIND === 'github'
       ? {
           kind: 'github',
           repo: {
-            owner: process.env.GITHUB_REPO_OWNER!,
-            name: process.env.GITHUB_REPO_NAME!,
+            owner: import.meta.env.PUBLIC_GITHUB_REPO_OWNER!,
+            name: import.meta.env.PUBLIC_GITHUB_REPO_NAME!,
           },
         }
       : { kind: 'local' },
