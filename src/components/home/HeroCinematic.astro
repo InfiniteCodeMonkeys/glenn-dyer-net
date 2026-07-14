@@ -9,14 +9,14 @@ const quotes = [
     {
         text: "Gripping WWII espionage thriller rich in history and suspense.",
         sourceName: "BookLife Reviews",
-        book: "On Trust No One",
+        book: "Trust No One",
         outlet: "Publishers Weekly",
     },
     {
         text: "A propulsive, masterfully crafted WWII thriller.",
         sourceName: "Chris Wallace, Veteran Journalist",
-        book: "On Trust No One",
-        outlet: "CNN",
+        book: "Trust No One",
+        outlet: "Veteran Journalist",
     },
     {
         text: "Atmospheric and tense, with plenty of treachery and a heavy dose of history.",
@@ -84,7 +84,7 @@ const quotes = [
                                         {q.sourceName}
                                         {q.book && (
                                             <>
-                                                , <em>{q.book}</em>
+                                                on, <em>{q.book}</em>
                                             </>
                                         )}
                                     </p>
