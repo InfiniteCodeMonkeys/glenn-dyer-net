@@ -18,18 +18,21 @@ const { variant = 'light' } = Astro.props;
           </p>
         </div>
         <div class="col-span-12 md:col-span-5">
-          <form class="flex flex-col gap-4">
+          <form class="newsletter-form flex flex-col gap-4" novalidate>
             <input
               type="email"
+              name="email"
+              required
               placeholder="Your email address"
               class="w-full bg-surface-container border border-outline-variant text-primary placeholder:text-on-surface-variant font-body-md text-body-md py-4 px-5 focus:outline-none focus:border-secondary transition-colors"
             />
             <button
               type="submit"
-              class="bg-secondary text-white py-4 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors duration-200"
+              class="newsletter-submit bg-secondary text-white py-4 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               SUBSCRIBE
             </button>
+            <p class="newsletter-feedback hidden font-body-md text-body-md"></p>
           </form>
           <p class="mt-4 font-data-mono text-[11px] text-on-surface-variant uppercase tracking-widest">
             No spam. Unsubscribe at any time.
@@ -46,19 +49,61 @@ const { variant = 'light' } = Astro.props;
       <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
         Sign up for Glenn Dyer's newsletter—book news, research notes, and exclusive content.
       </p>
-      <div class="flex flex-col md:flex-row gap-3">
+      <form class="newsletter-form flex flex-col md:flex-row gap-3" novalidate>
         <input
           type="email"
+          name="email"
+          required
           placeholder="Your email address"
           class="flex-grow bg-surface-container border border-outline-variant text-primary placeholder:text-on-surface-variant font-body-md text-body-md py-4 px-5 focus:outline-none focus:border-secondary transition-colors"
         />
         <button
           type="submit"
-          class="bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors whitespace-nowrap"
+          class="newsletter-submit bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
         >
           SUBSCRIBE
         </button>
-      </div>
+      </form>
+      <p class="newsletter-feedback hidden font-body-md text-body-md mt-4"></p>
     </div>
   </section>
 )}
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.newsletter-form').forEach((form) => {
+    const btn = form.querySelector<HTMLButtonElement>('.newsletter-submit');
+    const feedback = form.parentElement?.querySelector<HTMLElement>('.newsletter-feedback')
+      ?? form.querySelector<HTMLElement>('.newsletter-feedback');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!btn || !feedback) return;
+
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'SUBSCRIBING...';
+      feedback.className = 'hidden';
+
+      const body = new FormData(form);
+
+      try {
+        const res = await fetch('/api/newsletter', { method: 'POST', body });
+        const json = await res.json();
+
+        if (res.ok) {
+          feedback.textContent = 'Thanks for subscribing!';
+          feedback.className = 'newsletter-feedback font-body-md text-body-md text-secondary mt-4';
+          form.reset();
+        } else {
+          throw new Error(json.error ?? 'Something went wrong. Please try again.');
+        }
+      } catch (err: any) {
+        feedback.textContent = err.message ?? 'Something went wrong. Please try again.';
+        feedback.className = 'newsletter-feedback font-body-md text-body-md text-on-surface-variant mt-4';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
+  });
+</script>
