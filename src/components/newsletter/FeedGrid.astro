@@ -12,11 +12,6 @@ const { posts } = Astro.props;
 <section class="mb-16 md:mb-[120px]">
   <div class="flex items-center justify-between mb-12 border-b border-outline-variant pb-4">
     <h3 class="font-label-caps text-label-caps text-secondary tracking-widest">RECENT POSTS</h3>
-    <div class="flex gap-6 font-data-mono text-data-mono uppercase">
-      <span class="text-primary border-b border-primary cursor-pointer">Latest</span>
-      <span class="text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Archive</span>
-      <span class="text-on-surface-variant hover:text-primary cursor-pointer transition-colors">Research</span>
-    </div>
   </div>
 
   {posts.length === 0 ? (

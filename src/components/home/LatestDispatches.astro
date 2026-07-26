@@ -1,24 +1,9 @@
 ---
-const sidebarArticles = [
-    {
-        date: "MAY 2026",
-        title: "Debts Owed: Book Five Announced",
-        excerpt:
-            "Glenn Dyer reveals the title and cover of the fifth Conor Thorn novel.",
-    },
-    {
-        date: "MARCH 2024",
-        title: "Free Short Story: Available Now",
-        excerpt:
-            'Download "A Visit to the Ogre in His Den"—exclusive for newsletter subscribers.',
-    },
-    {
-        date: "JANUARY 2024",
-        title: "The Conor Thorn Box Set",
-        excerpt:
-            "All four novels bundled for $9.99—the perfect introduction to the series.",
-    },
-];
+import { getNewsletterPosts } from '../../data/newsletter';
+
+const posts = await getNewsletterPosts();
+const [featured, ...rest] = posts;
+const sidebarArticles = rest.slice(0, 3);
 ---
 
 <section class="py-[120px] bg-surface">
@@ -41,48 +26,51 @@ const sidebarArticles = [
         </div>
 
         <div class="grid grid-cols-12 gap-4 md:gap-8">
-            <article class="col-span-12 lg:col-span-8 group cursor-pointer">
-                <div class="relative overflow-hidden mb-6">
-                    <img
-                        class="w-full aspect-video object-cover filter transition-all duration-700"
-                        src="./liberty_ships.jpg"
-                        alt="Glenn Dyer presenting at Dolly's Bookstore in Park City, UT"
-                    />
-                </div>
-                <span
-                    class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest"
-                    >JUNE 2024 · BEHIND THE BOOKS</span
-                >
-                <h3
-                    class="font-headline-md text-headline-md text-primary font-bold mb-4 group-hover:text-secondary transition-colors tracking-tight"
-                >
-                    The Real History Behind the Conor Thorn Series
-                </h3>
-                <p
-                    class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed"
-                >
-                    Glenn Dyer shares the declassified OSS records, wartime
-                    dispatches, and forgotten personal accounts that inspire
-                    each novel in the Conor Thorn series.
-                </p>
-            </article>
+            {
+                featured && (
+                    <a
+                        href="/newsletter"
+                        class="col-span-12 lg:col-span-8 group cursor-pointer"
+                    >
+                        <div class="relative overflow-hidden mb-6">
+                            <img
+                                class="w-full aspect-video object-cover filter transition-all duration-700"
+                                src={featured.image}
+                                alt={featured.imageAlt}
+                            />
+                        </div>
+                        <span class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest">
+                            {[featured.displayDate, featured.category]
+                                .filter(Boolean)
+                                .join(" · ")}
+                        </span>
+                        <h3 class="font-headline-md text-headline-md text-primary font-bold mb-4 group-hover:text-secondary transition-colors tracking-tight">
+                            {featured.title}
+                        </h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed line-clamp-3">
+                            {featured.excerpt}
+                        </p>
+                    </a>
+                )
+            }
 
             <div class="col-span-12 lg:col-span-4 flex flex-col gap-10">
                 {
-                    sidebarArticles.map(({ date, title, excerpt }, i) => (
-                        <article
+                    sidebarArticles.map((post, i) => (
+                        <a
+                            href="/newsletter"
                             class={`group cursor-pointer ${i < sidebarArticles.length - 1 ? "border-b border-outline-variant pb-10" : ""}`}
                         >
                             <span class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest">
-                                {date}
+                                {post.displayDate}
                             </span>
                             <h4 class="font-headline-md text-lg text-primary font-bold mb-2 group-hover:text-secondary transition-colors">
-                                {title}
+                                {post.title}
                             </h4>
-                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">
-                                {excerpt}
+                            <p class="font-body-md text-sm text-on-surface-variant leading-relaxed line-clamp-3">
+                                {post.excerpt}
                             </p>
-                        </article>
+                        </a>
                     ))
                 }
             </div>

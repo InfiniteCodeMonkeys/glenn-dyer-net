@@ -15,17 +15,25 @@
     </div>
 
     <div class="col-span-12 md:col-span-4 flex flex-col justify-end items-start md:items-end">
-      <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest mb-3 block">SUBSCRIBE</label>
-      <div class="flex border-b border-outline-variant w-full focus-within:border-secondary transition-colors">
-        <input
-          type="email"
-          placeholder="Your email address"
-          class="bg-transparent outline-none font-body-md text-body-md text-primary placeholder:text-on-surface-variant w-full py-3 focus:outline-none"
-        />
-        <button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-      </div>
+      <form class="newsletter-form w-full" novalidate>
+        <label class="font-label-caps text-label-caps text-on-surface-variant tracking-widest mb-3 block">SUBSCRIBE</label>
+        <div class="flex border-b border-outline-variant w-full focus-within:border-secondary transition-colors">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Your email address"
+            class="bg-transparent outline-none font-body-md text-body-md text-primary placeholder:text-on-surface-variant w-full py-3 focus:outline-none"
+          />
+          <button
+            type="submit"
+            class="newsletter-submit p-2 text-on-surface-variant hover:text-secondary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+        <p class="newsletter-feedback hidden font-body-md text-body-md mt-3"></p>
+      </form>
     </div>
   </div>
 </section>
