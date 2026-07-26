@@ -36,6 +36,26 @@ export default config({
         interstitialQuote: fields.text({ label: 'Interstitial Quote', multiline: true }),
         genre: fields.text({ label: 'Genre' }),
         setting: fields.text({ label: 'Setting' }),
+        buyLink: fields.url({
+          label: 'Buy Link',
+          description: 'Used for the "Buy Now" button on the books listing page. Leave blank to hide the button.',
+        }),
+        trailerUrl: fields.url({
+          label: 'Trailer URL',
+          description: 'Leave blank to hide the "View Trailer" button.',
+        }),
+        purchaseLinks: fields.object(
+          {
+            hardcover: fields.url({ label: 'Hardcover' }),
+            paperback: fields.url({ label: 'Paperback' }),
+            ebook: fields.url({ label: 'Ebook' }),
+            audiobook: fields.url({ label: 'Audiobook' }),
+          },
+          {
+            label: 'Purchase Links by Format',
+            description: 'Shown on the book detail page. Formats without a link are hidden.',
+          }
+        ),
         testimonials: fields.array(
           fields.object({
             quote: fields.text({ label: 'Quote', multiline: true }),
