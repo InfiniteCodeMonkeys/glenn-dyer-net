@@ -63,12 +63,16 @@ const { book } = Astro.props;
                     >shopping_cart</span
                 >
             </a>
-            <a
-                href="#"
-                class="border border-outline-variant text-on-surface-variant px-10 py-4 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors duration-200 uppercase pt-5"
-            >
-                View Trailer
-            </a>
+            {book.trailerUrl && (
+                <a
+                    href={book.trailerUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="border border-outline-variant text-on-surface-variant px-10 py-4 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors duration-200 uppercase pt-5"
+                >
+                    View Trailer
+                </a>
+            )}
         </div>
     </div>
 </section>

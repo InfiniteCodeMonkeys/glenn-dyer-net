@@ -1,5 +1,5 @@
 ---
-import type { Book } from '../../data/books';
+import { getBook, type Book } from '../../data/books';
 
 interface Props {
   book: Book;
@@ -8,11 +8,14 @@ interface Props {
 const { book } = Astro.props;
 
 const formats = [
-  { icon: 'menu_book', label: 'HARDCOVER', href: '#' },
-  { icon: 'book', label: 'PAPERBACK', href: '#' },
-  { icon: 'tablet_android', label: 'EBOOK', href: '#' },
-  { icon: 'headphones', label: 'AUDIOBOOK', href: '#' },
-];
+  { icon: 'menu_book', label: 'HARDCOVER', href: book.purchaseLinks.hardcover },
+  { icon: 'book', label: 'PAPERBACK', href: book.purchaseLinks.paperback },
+  { icon: 'tablet_android', label: 'EBOOK', href: book.purchaseLinks.ebook },
+  { icon: 'headphones', label: 'AUDIOBOOK', href: book.purchaseLinks.audiobook },
+].filter((format) => format.href);
+
+const boxSetId = 'box-set-books-1-4';
+const boxSet = book.id === boxSetId ? undefined : await getBook(boxSetId);
 ---
 
 <section id="order" class="py-[120px] bg-surface-container-low">
@@ -23,26 +26,32 @@ const formats = [
       <em>{book.title}</em> is available in all formats, wherever books are sold.
     </p>
 
-    <div class="flex flex-col md:flex-row justify-center items-center gap-10 mb-20">
-      {formats.map(({ icon, label, href }) => (
-        <a href={href} class="group flex flex-col items-center gap-4 hover:text-secondary transition-colors">
-          <span class="p-8 border border-outline-variant group-hover:border-secondary transition-colors">
-            <span class="material-symbols-outlined text-4xl">{icon}</span>
-          </span>
-          <span class="font-label-caps text-label-caps tracking-widest text-on-surface-variant group-hover:text-secondary transition-colors">{label}</span>
-        </a>
-      ))}
-    </div>
+    {formats.length > 0 && (
+      <div class="flex flex-col md:flex-row justify-center items-center gap-10 mb-20">
+        {formats.map(({ icon, label, href }) => (
+          <a href={href} target="_blank" rel="noopener noreferrer" class="group flex flex-col items-center gap-4 hover:text-secondary transition-colors">
+            <span class="p-8 border border-outline-variant group-hover:border-secondary transition-colors">
+              <span class="material-symbols-outlined text-4xl">{icon}</span>
+            </span>
+            <span class="font-label-caps text-label-caps tracking-widest text-on-surface-variant group-hover:text-secondary transition-colors">{label}</span>
+          </a>
+        ))}
+      </div>
+    )}
 
-    <div class="border border-secondary p-12 max-w-2xl mx-auto">
-      <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">BOX SET — BOOKS 1–4</p>
-      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">Get all four Conor Thorn novels for just $9.99—the perfect way to start the series.</p>
-      <a
-        href="#"
-        class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
-      >
-        GET THE BOX SET
-      </a>
-    </div>
+    {boxSet?.buyLink && (
+      <div class="border border-secondary p-12 max-w-2xl mx-auto">
+        <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">BOX SET — BOOKS 1–4</p>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">Get all four Conor Thorn novels for just $9.99—the perfect way to start the series.</p>
+        <a
+          href={boxSet.buyLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
+        >
+          GET THE BOX SET
+        </a>
+      </div>
+    )}
   </div>
 </section>

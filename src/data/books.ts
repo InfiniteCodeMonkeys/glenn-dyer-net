@@ -7,6 +7,13 @@ export interface BookTestimonial {
   outlet: string;
 }
 
+export interface BookPurchaseLinks {
+  hardcover?: string;
+  paperback?: string;
+  ebook?: string;
+  audiobook?: string;
+}
+
 export interface Book {
   id: string;
   number: number;
@@ -18,6 +25,9 @@ export interface Book {
   interstitialQuote: string;
   genre: string;
   setting: string;
+  buyLink?: string;
+  trailerUrl?: string;
+  purchaseLinks: BookPurchaseLinks;
   testimonials: BookTestimonial[];
 }
 
@@ -37,6 +47,14 @@ export async function getBooks(): Promise<Book[]> {
       interstitialQuote: entry.interstitialQuote ?? '',
       genre: entry.genre ?? '',
       setting: entry.setting ?? '',
+      buyLink: entry.buyLink ?? undefined,
+      trailerUrl: entry.trailerUrl ?? undefined,
+      purchaseLinks: {
+        hardcover: entry.purchaseLinks?.hardcover ?? undefined,
+        paperback: entry.purchaseLinks?.paperback ?? undefined,
+        ebook: entry.purchaseLinks?.ebook ?? undefined,
+        audiobook: entry.purchaseLinks?.audiobook ?? undefined,
+      },
       testimonials: (entry.testimonials ?? []).map((t) => ({
         quote: t.quote ?? '',
         source: t.source ?? '',

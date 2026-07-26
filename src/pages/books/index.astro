@@ -72,12 +72,16 @@ const books = await getBooks();
                                     {book.briefDescription}
                                 </p>
                                 <div class="flex flex-wrap gap-4">
-                                    <a
-                                        href="#"
-                                        class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors duration-200"
-                                    >
-                                        BUY NOW
-                                    </a>
+                                    {book.buyLink && (
+                                        <a
+                                            href={book.buyLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors duration-200"
+                                        >
+                                            BUY NOW
+                                        </a>
+                                    )}
                                     <a
                                         href={`/books/${book.id}`}
                                         class="border border-outline-variant text-on-surface-variant px-8 py-3 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors duration-200"
