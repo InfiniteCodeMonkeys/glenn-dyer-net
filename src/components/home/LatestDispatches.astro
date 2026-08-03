@@ -1,7 +1,7 @@
 ---
-import { getNewsletterPosts } from '../../data/newsletter';
+import { getBlogPosts } from '../../data/blog';
 
-const posts = await getNewsletterPosts();
+const posts = await getBlogPosts();
 const [featured, ...rest] = posts;
 const sidebarArticles = rest.slice(0, 3);
 ---
@@ -18,7 +18,7 @@ const sidebarArticles = rest.slice(0, 3);
                 </h2>
             </div>
             <a
-                href="/newsletter"
+                href="/blog"
                 class="font-label-caps text-label-caps text-secondary tracking-widest hover:text-on-surface transition-colors"
             >
                 VIEW ALL →
@@ -29,7 +29,7 @@ const sidebarArticles = rest.slice(0, 3);
             {
                 featured && (
                     <a
-                        href="/newsletter"
+                        href={`/blog/${featured.slug}`}
                         class="col-span-12 lg:col-span-8 group cursor-pointer"
                     >
                         <div class="relative overflow-hidden mb-6">
@@ -58,7 +58,7 @@ const sidebarArticles = rest.slice(0, 3);
                 {
                     sidebarArticles.map((post, i) => (
                         <a
-                            href="/newsletter"
+                            href={`/blog/${post.slug}`}
                             class={`group cursor-pointer ${i < sidebarArticles.length - 1 ? "border-b border-outline-variant pb-10" : ""}`}
                         >
                             <span class="font-data-mono text-data-mono text-secondary mb-2 block tracking-widest">

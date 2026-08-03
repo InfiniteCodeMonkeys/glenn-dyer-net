@@ -56,7 +56,9 @@ const { book } = Astro.props;
 
         <div class="flex flex-wrap gap-4">
             <a
-                href="#order"
+                href={book.buyLink || "#order"}
+                target={book.buyLink ? "_blank" : undefined}
+                rel={book.buyLink ? "noopener noreferrer" : undefined}
                 class="bg-secondary text-white px-10 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black hover:text-white transition-colors duration-200 flex items-center gap-3"
             >
                 ORDER NOW <span class="material-symbols-outlined text-sm"

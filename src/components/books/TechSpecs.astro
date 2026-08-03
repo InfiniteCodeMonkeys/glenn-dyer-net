@@ -7,11 +7,13 @@ interface Props {
 
 const { book } = Astro.props;
 
+const formatOptions = ['Hardcover', 'Paperback', 'Ebook', ...(book.hasAudiobook ? ['Audiobook'] : [])];
+
 const specs = [
   { label: 'Series', value: `The Conor Thorn Series — Book ${book.number}` },
   { label: 'Genre', value: book.genre },
   { label: 'Setting', value: book.setting },
-  { label: 'Formats', value: 'Hardcover · Paperback · Ebook · Audiobook' },
+  { label: 'Formats', value: formatOptions.join(' · ') },
   { label: 'Box Set', value: 'Books 1–4 available for $9.99' },
 ];
 ---

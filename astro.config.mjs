@@ -12,6 +12,7 @@ export default defineConfig({
   redirects: {
     '/admin': '/keystatic',
     '/admin/[...path]': '/keystatic/[...path]',
+    '/newsletter': '/blog',
   },
 
   vite: {

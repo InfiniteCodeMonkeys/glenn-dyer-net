@@ -39,6 +39,19 @@ const boxSet = book.id === boxSetId ? undefined : await getBook(boxSetId);
       </div>
     )}
 
+    {formats.length === 0 && book.buyLink && (
+      <div class="mb-20">
+        <a
+          href={book.buyLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-secondary text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-black transition-colors"
+        >
+          BUY NOW
+        </a>
+      </div>
+    )}
+
     {boxSet?.buyLink && (
       <div class="border border-secondary p-12 max-w-2xl mx-auto">
         <p class="font-label-caps text-label-caps text-secondary tracking-widest mb-3">BOX SET — BOOKS 1–4</p>

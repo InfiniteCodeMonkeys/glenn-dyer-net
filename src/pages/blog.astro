@@ -1,0 +1,26 @@
+---
+export const prerender = true;
+import Layout from '../layouts/Layout.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+import FeedHero from '../components/blog/FeedHero.astro';
+import FeaturedAnalysis from '../components/blog/FeaturedAnalysis.astro';
+import FeedGrid from '../components/blog/FeedGrid.astro';
+import NewsletterCTA from '../components/NewsletterCTA.astro';
+import { getBlogPosts } from '../data/blog';
+
+const posts = await getBlogPosts();
+---
+
+<Layout title="Blog | Glenn Dyer" description="Research notes, book news, and exclusive content from Glenn Dyer, author of the Conor Thorn WWII espionage series.">
+  <NavBar activePage="blog" />
+
+  <main class="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16 py-24 mt-20">
+    <FeedHero />
+    <FeaturedAnalysis />
+    <FeedGrid posts={posts} />
+    <NewsletterCTA />
+  </main>
+
+  <Footer />
+</Layout>

@@ -40,16 +40,16 @@
   --color-tertiary-container: #2e2b27;
   --color-on-tertiary-container: #c4bfb8;
 
-  /* Dark surfaces — subtle tonal steps above #141210 */
-  --color-surface: #1c1a17;
-  --color-surface-dim: #100e0c;
-  --color-surface-bright: #302d29;
-  --color-surface-container-lowest: #0f0e0c;
-  --color-surface-container-low: #1a1815;
-  --color-surface-container: #201e1b;
-  --color-surface-container-high: #272420;
-  --color-surface-container-highest: #2e2b27;
-  --color-surface-variant: #272420;
+  /* Dark surfaces — all unified to the single site black (#141210) */
+  --color-surface: #141210;
+  --color-surface-dim: #141210;
+  --color-surface-bright: #141210;
+  --color-surface-container-lowest: #141210;
+  --color-surface-container-low: #141210;
+  --color-surface-container: #141210;
+  --color-surface-container-high: #141210;
+  --color-surface-container-highest: #141210;
+  --color-surface-variant: #141210;
   --color-on-surface: #e8e4de;
   --color-on-surface-variant: #a09890;
   --color-surface-tint: #b81209;

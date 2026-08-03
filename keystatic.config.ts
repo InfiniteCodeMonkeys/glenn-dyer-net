@@ -44,6 +44,11 @@ export default config({
           label: 'Trailer URL',
           description: 'Leave blank to hide the "View Trailer" button.',
         }),
+        hasAudiobook: fields.checkbox({
+          label: 'Audiobook Available',
+          description: 'Controls whether "Audiobook" appears in the Formats row on the book detail page.',
+          defaultValue: true,
+        }),
         purchaseLinks: fields.object(
           {
             hardcover: fields.url({ label: 'Hardcover' }),
@@ -70,11 +75,11 @@ export default config({
       },
     }),
 
-    newsletter: collection({
-      label: 'Newsletter Posts',
+    blog: collection({
+      label: 'Blog Posts',
       slugField: 'title',
-      path: 'src/content/newsletter/*',
-      format: { data: 'yaml' },
+      path: 'src/content/blog/*',
+      format: { data: 'yaml', contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         date: fields.date({ label: 'Date' }),
@@ -82,11 +87,19 @@ export default config({
         excerpt: fields.text({ label: 'Excerpt', multiline: true }),
         image: fields.image({
           label: 'Image',
-          directory: 'public/newsletter',
-          publicPath: '/newsletter/',
+          directory: 'public/blog',
+          publicPath: '/blog/',
         }),
         imageAlt: fields.text({ label: 'Image Alt Text' }),
-        content: fields.text({ label: 'Content (Markdown)', multiline: true }),
+        content: fields.markdoc({
+          label: 'Content',
+          options: {
+            image: {
+              directory: 'public/blog',
+              publicPath: '/blog/',
+            },
+          },
+        }),
       },
     }),
 
