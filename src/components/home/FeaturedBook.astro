@@ -1,5 +1,10 @@
 ---
+import { getBook } from "../../data/books";
 
+const book = await getBook("debts-owed");
+if (!book) throw new Error("Featured book 'debts-owed' not found");
+
+const testimonial = book.testimonials[0];
 ---
 
 <section class="py-[120px] bg-surface-container-low">
@@ -17,13 +22,13 @@
                 <div class="relative inline-block hard-shadow">
                     <img
                         class="w-full aspect-[2/3] object-cover"
-                        src="./trust_no_one_2d.jpg"
-                        alt="Trust No One book cover"
+                        src={book.coverImage}
+                        alt={`${book.title} book cover`}
                     />
                     <div
                         class="absolute top-0 left-0 bg-secondary text-white px-4 py-2 font-label-caps text-[10px] tracking-widest"
                     >
-                        BOOK FOUR
+                        BOOK {book.number}
                     </div>
                 </div>
             </div>
@@ -39,7 +44,7 @@
                 <h2
                     class="font-headline-lg text-headline-lg text-primary font-bold mb-2 tracking-tight"
                 >
-                    Trust No One
+                    {book.title}
                 </h2>
                 <p
                     class="font-headline-md text-xl text-on-surface-variant font-normal mb-8"
@@ -52,26 +57,24 @@
                 <p
                     class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed"
                 >
-                    After being fired from the OSS and MI6, Conor Thorn and his
-                    wife Emily plunge into a dangerous mission in Algiers and
-                    southern France to expose a secret archive threating Allies
-                    unity.
+                    {book.briefDescription}
                 </p>
-                <p class="font-body-lg text-body-lg text-zinc-400 mb-10 italic">
-                    "A propulsive, masterfully crafted WWII thriller." — Chris
-                    Wallace, CNN
-                </p>
+                {testimonial && (
+                    <p class="font-body-lg text-body-lg text-zinc-400 mb-10 italic">
+                        "{testimonial.quote}" — {testimonial.source}, {testimonial.outlet}
+                    </p>
+                )}
 
                 <div class="flex flex-wrap gap-3">
                     <a
-                        href="https://www.amazon.com/Trust-No-One-Espionage-Thriller-ebook/dp/B0CN85XJS9/ref=sr_1_3?keywords=Glenn+Dyer&qid=1702328692&s=books&sr=1-3"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={book.buyLink || "#order"}
+                        target={book.buyLink ? "_blank" : undefined}
+                        rel={book.buyLink ? "noopener noreferrer" : undefined}
                         class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors"
                         >ORDER NOW</a
                     >
                     <a
-                        href="/books/trust-no-one"
+                        href={`/books/${book.id}`}
                         class="border border-outline-variant text-on-surface-variant px-8 py-3 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors"
                         >LEARN MORE</a
                     >
