@@ -98,9 +98,9 @@
   --text-body-md: 1.0625rem;
   --text-body-md--line-height: 1.55;
 
-  --text-label-caps: 0.75rem;
-  --text-label-caps--line-height: 1;
-  --text-label-caps--letter-spacing: 0.1em;
+  --text-label-caps: 0.9375rem;
+  --text-label-caps--line-height: 1.2;
+  --text-label-caps--letter-spacing: 0.08em;
 
   --text-data-mono: 0.875rem;
   --text-data-mono--line-height: 1.4;
