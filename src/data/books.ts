@@ -28,6 +28,7 @@ export interface Book {
   buyLink?: string;
   trailerUrl?: string;
   hasAudiobook: boolean;
+  isPreOrder: boolean;
   purchaseLinks: BookPurchaseLinks;
   testimonials: BookTestimonial[];
 }
@@ -51,6 +52,7 @@ export async function getBooks(): Promise<Book[]> {
       buyLink: entry.buyLink ?? undefined,
       trailerUrl: entry.trailerUrl ?? undefined,
       hasAudiobook: entry.hasAudiobook ?? true,
+      isPreOrder: entry.isPreOrder ?? false,
       purchaseLinks: {
         hardcover: entry.purchaseLinks?.hardcover ?? undefined,
         paperback: entry.purchaseLinks?.paperback ?? undefined,

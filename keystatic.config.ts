@@ -49,6 +49,11 @@ export default config({
           description: 'Controls whether "Audiobook" appears in the Formats row on the book detail page.',
           defaultValue: true,
         }),
+        isPreOrder: fields.checkbox({
+          label: 'Pre-Order',
+          description: 'Controls whether the buy button says "Pre-Order Now" instead of "Order Now".',
+          defaultValue: false,
+        }),
         purchaseLinks: fields.object(
           {
             hardcover: fields.url({ label: 'Hardcover' }),

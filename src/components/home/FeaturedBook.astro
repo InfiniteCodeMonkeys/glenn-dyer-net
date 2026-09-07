@@ -71,7 +71,7 @@ const testimonial = book.testimonials[0];
                         target={book.buyLink ? "_blank" : undefined}
                         rel={book.buyLink ? "noopener noreferrer" : undefined}
                         class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors"
-                        >ORDER NOW</a
+                        >{book.isPreOrder ? "PRE-ORDER NOW" : "ORDER NOW"}</a
                     >
                     <a
                         href={`/books/${book.id}`}
