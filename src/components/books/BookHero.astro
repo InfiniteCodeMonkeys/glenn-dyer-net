@@ -6,6 +6,15 @@ interface Props {
 }
 
 const { book } = Astro.props;
+
+function getYouTubeId(url?: string): string | null {
+    if (!url) return null;
+    const match = url.match(/(?:v=|youtu\.be\/)([\w-]{11})/);
+    return match ? match[1] : null;
+}
+
+const trailerId = getYouTubeId(book.trailerUrl);
+const trailerDialogId = `trailer-${book.id}`;
 ---
 
 <section
@@ -65,16 +74,71 @@ const { book } = Astro.props;
                     >shopping_cart</span
                 >
             </a>
-            {book.trailerUrl && (
-                <a
-                    href={book.trailerUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+            {trailerId && (
+                <button
+                    type="button"
+                    data-trailer-open={trailerDialogId}
                     class="border border-outline-variant text-on-surface-variant px-10 py-4 font-label-caps text-label-caps tracking-widest hover:border-primary hover:text-primary transition-colors duration-200 uppercase pt-5"
                 >
-                    View Trailer
-                </a>
+                    Watch Trailer
+                </button>
             )}
         </div>
     </div>
+
+    {trailerId && (
+        <dialog
+            id={trailerDialogId}
+            data-trailer-dialog
+            class="backdrop:bg-black/80 bg-transparent p-0 w-[92vw] max-w-3xl m-auto"
+        >
+            <div class="relative aspect-video w-full">
+                <button
+                    type="button"
+                    data-trailer-close
+                    aria-label="Close trailer"
+                    class="absolute -top-10 right-0 text-white hover:text-primary transition-colors"
+                >
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <iframe
+                    class="w-full h-full"
+                    src={`https://www.youtube-nocookie.com/embed/${trailerId}`}
+                    title={`${book.title} trailer`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </dialog>
+    )}
 </section>
+
+<script>
+    function initTrailerDialogs() {
+        document.querySelectorAll<HTMLButtonElement>("[data-trailer-open]").forEach((btn) => {
+            const dialog = document.getElementById(
+                btn.dataset.trailerOpen ?? "",
+            ) as HTMLDialogElement | null;
+            if (!dialog) return;
+            btn.addEventListener("click", () => dialog.showModal());
+        });
+
+        document.querySelectorAll<HTMLDialogElement>("[data-trailer-dialog]").forEach((dialog) => {
+            const iframe = dialog.querySelector("iframe");
+            const closeBtn = dialog.querySelector<HTMLButtonElement>("[data-trailer-close]");
+
+            closeBtn?.addEventListener("click", () => dialog.close());
+
+            dialog.addEventListener("click", (e) => {
+                if (e.target === dialog) dialog.close();
+            });
+
+            dialog.addEventListener("close", () => {
+                if (iframe) iframe.src = iframe.src;
+            });
+        });
+    }
+
+    initTrailerDialogs();
+    document.addEventListener("astro:page-load", initTrailerDialogs);
+</script>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-    activePage?: "home" | "books" | "about" | "blog" | "contact";
+    activePage?: "home" | "books" | "about" | "contact";
 }
 
 const { activePage } = Astro.props;
@@ -9,7 +9,6 @@ const links = [
     { href: "/", label: "Home", key: "home" },
     { href: "/books", label: "Books", key: "books" },
     { href: "/about", label: "About", key: "about" },
-    { href: "/blog", label: "Blog", key: "blog" },
     { href: "/contact", label: "Contact", key: "contact" },
 ];
 ---

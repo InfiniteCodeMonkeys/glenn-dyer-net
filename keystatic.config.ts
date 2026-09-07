@@ -75,34 +75,6 @@ export default config({
       },
     }),
 
-    blog: collection({
-      label: 'Blog Posts',
-      slugField: 'title',
-      path: 'src/content/blog/*',
-      format: { data: 'yaml', contentField: 'content' },
-      schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
-        date: fields.date({ label: 'Date' }),
-        category: fields.text({ label: 'Category', description: 'e.g. BEHIND THE BOOKS' }),
-        excerpt: fields.text({ label: 'Excerpt', multiline: true }),
-        image: fields.image({
-          label: 'Image',
-          directory: 'public/blog',
-          publicPath: '/blog/',
-        }),
-        imageAlt: fields.text({ label: 'Image Alt Text' }),
-        content: fields.markdoc({
-          label: 'Content',
-          options: {
-            image: {
-              directory: 'public/blog',
-              publicPath: '/blog/',
-            },
-          },
-        }),
-      },
-    }),
-
     carouselItems: collection({
       label: 'Hero Carousel Slides',
       slugField: 'bookTitle',
