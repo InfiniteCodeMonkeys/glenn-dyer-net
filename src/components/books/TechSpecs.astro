@@ -7,14 +7,16 @@ interface Props {
 
 const { book } = Astro.props;
 
+const isBoxSet = book.id === 'box-set-books-1-4';
 const formatOptions = ['Hardcover', 'Paperback', 'Ebook', ...(book.hasAudiobook ? ['Audiobook'] : [])];
 
 const specs = [
-  { label: 'Series', value: `The Conor Thorn Series — Book ${book.number}` },
+  { label: 'Series', value: isBoxSet ? 'The Conor Thorn Series — Books 1–4' : `The Conor Thorn Series — Book ${book.number}` },
   { label: 'Genre', value: book.genre },
   { label: 'Setting', value: book.setting },
   { label: 'Formats', value: formatOptions.join(' · ') },
-  { label: 'Box Set', value: 'Books 1–4 available for $9.99' },
+  ...(!isBoxSet && !book.hasAudiobook ? [{ label: 'Audiobook', value: `${book.title} Audiobook Coming Soon!` }] : []),
+  ...(isBoxSet ? [] : [{ label: 'Box Set', value: 'Books 1–4 available for $9.99' }]),
 ];
 ---
 
@@ -29,7 +31,7 @@ const specs = [
         </div>
         <h2 class="font-headline-md text-headline-md text-primary font-bold tracking-tight">{book.title}</h2>
         <p class="mt-4 font-body-md text-body-md text-on-surface-variant leading-relaxed">
-          Available wherever books are sold, in every format.
+          {book.isPreOrder ? 'Pre-order now, in every format.' : 'Available wherever books are sold, in every format.'}
         </p>
       </div>
 

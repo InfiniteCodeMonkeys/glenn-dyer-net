@@ -1,13 +1,13 @@
 ---
 const books = [
     {
-        year: "2019",
+        year: "2018",
         label: "BOOK ONE",
         labelColor: "text-secondary",
         dotColor: "bg-secondary",
         title: "The Torch Betrayal",
         description:
-            "The debut Conor Thorn novel. Set against Operation Torch—the Allied invasion of North Africa—Thorn races to stop a German agent from unraveling the entire operation before D-Day.",
+            "The debut Conor Thorn novel. When the plans for Operation Torch—the Allied invasion of North Africa—go missing, Thorn races to find the traitor before the invasion is compromised.",
         showLine: true,
     },
     {
@@ -31,13 +31,13 @@ const books = [
         showLine: true,
     },
     {
-        year: "2022",
+        year: "2023",
         label: "BOOK FOUR",
         labelColor: "text-secondary",
         dotColor: "bg-zinc-500",
         title: "Trust No One",
         description:
-            "After being fired from the OSS and MI6, Conor Thorn and his wife Emily plunge into a dangerous mission in Algiers and southern France to expose a secret archive threating Allies unity.",
+            "After being dismissed from the OSS and MI6, respectively, Conor and Emily Thorn plunge into a dangerous mission in Algiers and southern France to expose a secret archive threatening Allied unity.",
         showLine: true,
     },
     {
@@ -47,7 +47,9 @@ const books = [
         dotColor: "bg-secondary",
         title: "Debts Owed",
         description:
-            "The latest heart pounding installment in the Conor Thorn series will be released November 1st! Look for the pre-order on Amazon soon.",
+            "The latest heart-pounding installment in the Conor Thorn series will be released November 1st!",
+        buyLink:
+            "https://www.amazon.com/Debts-Owed-World-Espionage-Thriller-ebook/dp/B0HJRXW4VQ/ref=sr_1_4?crid=UYJJ6EJ0GFNV&dib=eyJ2IjoiMSJ9.wSod6_Wfe-aZ0OuwlXWPAnN7IDb1I7Z4HsfNSF4glzs1FnD73Z5CElx-Ob3zrBVxUdIBMGL4PkhXz8eUGb91_odsw-ZobDR9KbJGOiZDEMPeLgkbv-sBesKWyNoRQkmlhXnFJXZ-9U9FB61Rvx-3VCAma2QXgeBV6wT9xVF48kvX0vxD-Xn52Xv7LaaeMnugwvXZcieVg19rwf_FurvLPIcjC9jE2XEg2M7mxwWIZgQ.2fTe5CZZ5rJgNgGuNN7RSPsnA68Bb8aUn6BOq6sUPHY&dib_tag=se&keywords=glenn+dyer&qid=1789775175&s=books&sprefix=glenn+dyer%2Cstripbooks%2C201&sr=1-4",
         showLine: false,
     },
 ];
@@ -74,6 +76,7 @@ const books = [
                         dotColor,
                         title,
                         description,
+                        buyLink,
                         showLine,
                     }) => (
                         <div class="flex items-start gap-10 mb-16 relative">
@@ -96,6 +99,18 @@ const books = [
                                 </h5>
                                 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                                     {description}
+                                    {buyLink && (
+                                        <>
+                                            {" "}
+                                            <a
+                                                href={buyLink}
+                                                class="text-secondary underline"
+                                            >
+                                                Pre-order now on Amazon
+                                            </a>
+                                            .
+                                        </>
+                                    )}
                                 </p>
                             </div>
                         </div>

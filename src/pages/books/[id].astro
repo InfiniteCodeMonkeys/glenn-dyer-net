@@ -23,7 +23,11 @@ const { book } = Astro.props;
 
 <Layout
   title={`${book.title} | Glenn Dyer`}
-  description={`${book.title}—Book ${book.number} in Glenn Dyer's Conor Thorn WWII espionage series. ${book.briefDescription}`}
+  description={
+    book.id === 'box-set-books-1-4'
+      ? `${book.title}—Books 1–4 of Glenn Dyer's Conor Thorn WWII espionage series. ${book.briefDescription}`
+      : `${book.title}—Book ${book.number} in Glenn Dyer's Conor Thorn WWII espionage series. ${book.briefDescription}`
+  }
 >
   <NavBar activePage="books" />
 

@@ -15,6 +15,7 @@ function getYouTubeId(url?: string): string | null {
 
 const trailerId = getYouTubeId(book.trailerUrl);
 const trailerDialogId = `trailer-${book.id}`;
+const isBoxSet = book.id === "box-set-books-1-4";
 ---
 
 <section
@@ -32,7 +33,7 @@ const trailerDialogId = `trailer-${book.id}`;
             class="mt-6 flex items-center justify-between font-label-caps text-label-caps text-secondary tracking-widest border-b border-outline-variant pb-4"
         >
             <span>THE CONOR THORN SERIES</span>
-            <span>BOOK {book.number}</span>
+            <span>{isBoxSet ? "BOX SET" : `BOOK ${book.number}`}</span>
         </div>
     </div>
 
