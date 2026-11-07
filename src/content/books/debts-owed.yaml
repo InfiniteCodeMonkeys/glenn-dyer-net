@@ -1,7 +1,7 @@
 title: Debts Owed
 number: 5
 year: "2026"
-coverImage: /debts_owed_cover.jpg
+coverImage: /debts_owed_cover_ebook.jpg
 briefDescription: "Paris, 1943. When his wife is sent behind Nazi lines, OSS agent Conor Thorn takes an off-the-books mission into Gestapo-controlled Paris to expose a double agent and bring her home safe."
 fullDescription: "Paris belongs to the Gestapo. Spring, 1943. Conor Thorn is sick of losing those he treasured, so when the woman he loves is sent behind Nazi lines on a secret assignment, the frantic OSS agent jumps at British Intelligence's off-the-books offer to hunt a double agent in Paris—with no backup, no cover, and no idea who he can trust. Moving one forged paper and one held breath at a time through a city where collaborators control everything the Gestapo doesn't, Conor smuggles downed airmen and tracks the traitor while the one person he longs to keep alive remains cloaked in danger. Debts Owed is the taut fifth book in the Conor Thorn spy series—for readers who love relentless heroes, wartime treachery, and stories inspired by true events."
 interstitialQuote: Daring infiltrations, military secrets, dirty politics.
@@ -9,15 +9,24 @@ trailerUrl: "https://www.youtube.com/watch?v=eOJRRNqJwBs"
 genre: WWII Espionage Thriller
 setting: "Paris, 1943"
 hasAudiobook: false
-isPreOrder: true
+isPreOrder: false
 buyLink: "https://www.amazon.com/Debts-Owed-World-Espionage-Thriller-ebook/dp/B0HJRXW4VQ/ref=sr_1_4?crid=UYJJ6EJ0GFNV&dib=eyJ2IjoiMSJ9.wSod6_Wfe-aZ0OuwlXWPAnN7IDb1I7Z4HsfNSF4glzs1FnD73Z5CElx-Ob3zrBVxUdIBMGL4PkhXz8eUGb91_odsw-ZobDR9KbJGOiZDEMPeLgkbv-sBesKWyNoRQkmlhXnFJXZ-9U9FB61Rvx-3VCAma2QXgeBV6wT9xVF48kvX0vxD-Xn52Xv7LaaeMnugwvXZcieVg19rwf_FurvLPIcjC9jE2XEg2M7mxwWIZgQ.2fTe5CZZ5rJgNgGuNN7RSPsnA68Bb8aUn6BOq6sUPHY&dib_tag=se&keywords=glenn+dyer&qid=1789775175&s=books&sprefix=glenn+dyer%2Cstripbooks%2C201&sr=1-4"
 testimonials:
-  - quote: "Dyer's World War II thriller aches with grief as much as it plots deception and double-crossing in Nazi-occupied Paris...Threaded throughout the deception are glimmers of humanity...Real emotion runs through this narrative...Those who enjoy espionage intertwined with human emotion, moral ambiguity, and difficult questions of loyalty and obligation will be immersed."
-    source: BookLife
-    outlet: BookLife
+  - quote: "A richly researched and impressively layered WWII espionage thriller, Debts Owed combines the machinery of wartime intelligence with genuinely personal stakes."
+    source: Next Best Read
+    outlet: ""
   - quote: "The characters are sharp and intelligent, and the measured, deliberate, compelling dialogue matches them. Fans of thrillers set in World War II might find this novel is exactly what they have been looking for."
     source: The US Review of Books
-    outlet: The US Review of Books
-  - quote: "From agents and interagency squabbles to questions about loyalty and whether agents are working for the cause or the enemy, this thriller takes many unexpected turns. It dovetails the lives of participants on both sides of the Nazi occupation as Conor and Emily separately address challenges to their lives, mindsets, and loyalties."
-    source: D. Donovan, Senior Reviewer, Midwest Book Review
+    outlet: ""
+  - quote: "Dyer's World War II thriller aches with grief as much as it plots deception and double-crossing in Nazi-occupied Paris…Those who enjoy espionage intertwined with human emotion, moral ambiguity, and difficult questions of loyalty and obligation will be immersed."
+    source: BookLife
+    outlet: ""
+  - quote: "Dyer’s straightforward prose captures the danger of occupied France and gives the story a convincing sense of wartime life…The threads come together in a tense final confrontation… Dyer adds complexity to the WWII spy thriller through shifting loyalties and competing agendas among Allied agents, German officers, and Resistance members."
+    source: BookLife Prize
+    outlet: ""
+  - quote: "Overall, the engaging locations, storylines, and characters are sure to satisfy fans of the genre. An espionage tale with plenty of entertainment value for series’ fans."
+    source: Kirkus Reviews
+    outlet: ""
+  - quote: "From agents and interagency squabbles to questions about loyalty and whether agents are working for the cause or the enemy, this thriller takes many unexpected turns."
+    source: D. Donovan, Senior Reviewer
     outlet: Midwest Book Review

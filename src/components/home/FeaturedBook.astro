@@ -4,10 +4,27 @@ import { getBook } from "../../data/books";
 const book = await getBook("debts-owed");
 if (!book) throw new Error("Featured book 'debts-owed' not found");
 
-const testimonial = book.testimonials[0];
+const featuredQuotes = [
+    {
+        quote: "An intelligent and intriguing story about love, loyalty and courage. I can almost see the Netflix movie as it unfolds in eight episodes against an all-too-true World War II historical backdrop.",
+        attribution: "Steve Berry, <em>New York Times</em> and Internationally Bestselling Author",
+    },
+    {
+        quote: "Espionage with real emotional stakes…Glenn Dyer brings occupied Paris to life in this atmospheric World War II stunner. If you haven’t read the Conor Thorn series, you’re missing out. <em>Debts Owed</em> pays off—big time.",
+        attribution: "Alex Finlay, Bestselling Author of <em>The Anniversary</em>",
+    },
+    {
+        quote: "In the spirit of W.E.B. Griffin's catalog of military history and period pieces, and Kristin Hannah's character-driven story, <em>The Nightingale</em>…",
+        attribution: "Chanticleer Book Reviews – Five-Star Review",
+    },
+    {
+        quote: "…this is a gripping, well-paced thriller led by a pair of compelling agents and a nail-biting plot, which further establishes the Conor Thorn series as a standout in the genre.",
+        attribution: "The Independent Review of Books",
+    },
+];
 ---
 
-<section class="py-[120px] bg-surface-container-low">
+<section class="pt-[200px] pb-[120px] bg-surface-container-low">
     <div class="max-w-[1296px] mx-auto px-4 md:px-8 lg:px-16">
         <div class="flex items-center gap-4 mb-16">
             <div class="w-10 h-0.5 bg-secondary"></div>
@@ -59,11 +76,18 @@ const testimonial = book.testimonials[0];
                 >
                     {book.briefDescription}
                 </p>
-                {testimonial && (
-                    <p class="font-body-lg text-body-lg text-zinc-400 mb-10 italic">
-                        "{testimonial.quote}" — {testimonial.source}, {testimonial.outlet}
-                    </p>
-                )}
+                <div class="flex flex-col gap-6 mb-10">
+                    {featuredQuotes.map((q) => (
+                        <blockquote class="border-l-2 border-secondary pl-4">
+                            <p class="font-body-lg text-body-lg text-zinc-400 italic">
+                                &ldquo;<Fragment set:html={q.quote} />&rdquo;
+                            </p>
+                            <footer class="font-label-caps text-sm text-on-surface-variant mt-2">
+                                —<Fragment set:html={q.attribution} />
+                            </footer>
+                        </blockquote>
+                    ))}
+                </div>
 
                 <div class="flex flex-wrap gap-3">
                     <a
@@ -71,7 +95,7 @@ const testimonial = book.testimonials[0];
                         target={book.buyLink ? "_blank" : undefined}
                         rel={book.buyLink ? "noopener noreferrer" : undefined}
                         class="bg-secondary text-white px-8 py-3 font-label-caps text-label-caps tracking-widest hover:bg-on-surface hover:text-background transition-colors"
-                        >{book.isPreOrder ? "PRE-ORDER NOW" : "ORDER NOW"}</a
+                        >BUY NOW</a
                     >
                     <a
                         href={`/books/${book.id}`}
